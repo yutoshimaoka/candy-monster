@@ -1,0 +1,103 @@
+/*
+ * 「おすすめ・新着記事」
+ * 記事タイプラベル付きカードで表示（04_top-page-wireframe.md）
+ */
+
+.posts__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--gap-card);
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base) var(--easing-bounce),
+    box-shadow var(--duration-base) var(--easing-base);
+}
+
+.post-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.post-card__labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2xs);
+}
+
+.post-card__type {
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-pill);
+}
+
+.post-card__type--solve {
+  color: var(--color-candy-pink-text);
+  background-color: var(--color-pink-soft);
+}
+
+.post-card__type--try {
+  color: var(--color-coral-text);
+  background-color: var(--color-coral-soft);
+}
+
+.post-card__type--ai {
+  color: var(--color-lavender-text);
+  background-color: var(--color-lavender-soft);
+}
+
+.post-card__type--guide {
+  color: var(--color-turquoise-text);
+  background-color: var(--color-turquoise-soft);
+}
+
+.post-card__type--voice {
+  color: var(--color-sky-text);
+  background-color: var(--color-sky-soft);
+}
+
+.post-card__category {
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.post-card__title {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.post-card__excerpt {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.post-card__meta {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  padding-top: var(--spacing-md);
+  margin-top: auto;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.posts__action {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}

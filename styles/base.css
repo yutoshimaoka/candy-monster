@@ -1,0 +1,212 @@
+/*
+ * ベース：デザイントークン（DESIGN.md と対応）と全体の基本スタイル
+ * 値を変更するときは DESIGN.md も必ず更新すること
+ */
+
+:root {
+  /* ---- ベース ---- */
+  --color-bg-base: #fffbf5;
+  --color-bg-subtle: #fdeef2;
+  --color-bg-surface: #fff;
+  --color-bg-header: rgb(255 251 245 / 92%); /* = bg-base の半透明。スティッキーヘッダーのブラー地 */
+
+  /* ---- テキスト ---- */
+  --color-text-primary: #2b2430;
+  --color-text-secondary: #6b6270;
+  --color-text-on-fill: #fff;
+
+  /* ---- ブランド色：装飾用（文字を乗せない） ---- */
+  --color-candy-pink-vivid: #e5326e;
+  --color-coral-vivid: #f0562e;
+  --color-sunny-vivid: #ffc53d;
+  --color-turquoise-vivid: #0e9b93;
+  --color-sky-vivid: #38a8e8;
+  --color-lavender-vivid: #7c6bf0;
+
+  /* ---- ブランド色：文字を乗せる面用（白文字で AA 以上） ---- */
+  --color-candy-pink-strong: #e21d5f;
+  --color-coral-strong: #da3910;
+  --color-turquoise-strong: #0c837c;
+  --color-sky-strong: #157bb6;
+  --color-lavender-strong: #715fef;
+
+  /* ---- 淡色ティント：カード地・アイコン背景・ラベル地（文字を乗せてよい） ---- */
+  --color-pink-soft: #fdeef2; /* = bg-subtle と同値 */
+  --color-coral-soft: #fde9e3;
+  --color-sunny-soft: #fdf0dc;
+  --color-turquoise-soft: #e6f6f5;
+  --color-sky-soft: #e7f0fb;
+  --color-lavender-soft: #f0edfe; /* = ai-bg と同値 */
+  --color-cream: #fdf8ee;
+  --color-neutral-soft: #f1eef0;
+
+  /* ---- ラベル文字色：対応する soft 地の上で白黒以外の色を使うとき用（AA 以上） ---- */
+  --color-candy-pink-text: #d31b59; /* on pink-soft 4.59:1 */
+  --color-coral-text: #c6340f; /* on coral-soft 4.60:1 */
+  --color-turquoise-text: #0b7b74; /* on turquoise-soft 4.60:1 */
+  --color-sky-text: #1371a8; /* on sky-soft 4.62:1 */
+  --color-lavender-text: #6551ee; /* on lavender-soft 4.60:1 */
+  --color-amber-text: #8a5a00; /* on sunny-soft 5.27:1 */
+
+  /* ---- 役割 ---- */
+  --color-cta: var(--color-coral-strong);
+  --color-cta-hover: #b82f0d;
+  --color-ai: var(--color-lavender-strong);
+  --color-ai-hover: #5c48e8;
+  --color-ai-bg: var(--color-lavender-soft);
+  --color-discord: #5865f2;
+  --color-discord-hover: #4450e0;
+
+  /* ---- 罫線・状態 ---- */
+  --color-border: #ece4e6;
+  --color-border-strong: #d8ccd0;
+  --color-focus: #157bb6;
+
+  /* ---- タイポグラフィ ---- */
+  --font-family-base: 'Noto Sans JP', system-ui, sans-serif;
+  --font-family-display: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-h3: clamp(1.125rem, 1.0357rem + 0.381vw, 1.375rem);
+  --font-size-h2: clamp(1.375rem, 1.1071rem + 1.1429vw, 2.125rem);
+  --font-size-h1: clamp(1.75rem, 1.2143rem + 2.2857vw, 3.25rem);
+  --line-height-tight: 1.3;
+  --line-height-base: 1.7;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-base: 0.02em;
+  --letter-spacing-wide: 0.08em;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* ---- スペーシング ---- */
+  --spacing-2xs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-section: clamp(3rem, 2.1429rem + 3.6571vw, 5.5rem);
+  --gap-card: clamp(1rem, 0.8214rem + 0.7619vw, 1.5rem);
+
+  /* ---- レイアウト ---- */
+  --container-max: 71.25rem;
+  --container-narrow: 46rem;
+  --container-padding: clamp(1rem, 0.6429rem + 1.5238vw, 2rem);
+
+  /* ---- 角丸 ---- */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-pill: 62.4375rem;
+
+  /* ---- 影 ---- */
+  --shadow-sm: 0 1px 3px rgb(43 36 48 / 8%);
+  --shadow-card: 0 4px 16px rgb(43 36 48 / 8%);
+  --shadow-lg: 0 8px 32px rgb(43 36 48 / 12%);
+  --shadow-cta: 0 4px 14px rgb(218 57 16 / 32%);
+  --border-width: 1px;
+
+  /* ---- モーション ---- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --easing-base: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- z-index ---- */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-drawer: 300;
+  --z-modal: 400;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-base);
+  background-color: var(--color-bg-base);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================ */
+
+/* 共通レイアウト部品 */
+
+/* ============================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  padding-inline: var(--container-padding);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--spacing-section);
+}
+
+.section--subtle {
+  background-color: var(--color-bg-subtle);
+}
+
+.section__head {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.section__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.section__lead {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+
+/* スクリーンリーダー専用テキスト */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+/* キーボード操作時のみ表示するスキップリンク */
+.skip-link {
+  position: absolute;
+  top: var(--spacing-xs);
+  left: var(--spacing-xs);
+  z-index: var(--z-modal);
+  padding: var(--spacing-xs) var(--spacing-md);
+  color: var(--color-text-on-fill);
+  background-color: var(--color-cta);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

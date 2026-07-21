@@ -1,0 +1,95 @@
+/*
+ * 「AIと育児、こんなふうに使えるよ」
+ * AI機能はブルー〜ラベンダーで他UIと視覚的に区別する（11_design-direction.md）
+ */
+
+.ai {
+  background-color: var(--color-ai-bg);
+}
+
+.ai__label {
+  display: inline-flex;
+  gap: var(--spacing-2xs);
+  align-items: center;
+  padding: var(--spacing-2xs) var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-on-fill);
+  background-color: var(--color-ai);
+  border-radius: var(--radius-pill);
+}
+
+.ai__label-icon {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ai__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: var(--gap-card);
+}
+
+.ai-card {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  height: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.ai-card__icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--color-ai);
+  stroke-width: 1.75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ai-card__text {
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+
+.ai__note {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+  max-width: var(--container-narrow);
+  padding: var(--spacing-md);
+  margin-inline: auto;
+  margin-top: var(--spacing-xl);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-md);
+}
+
+.ai__note-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ai__action {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}

@@ -1,0 +1,83 @@
+/*
+ * 「カテゴリーから探す」
+ * 6カテゴリーをアイコン付きカードで表示（04_top-page-wireframe.md）
+ */
+
+.categories__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: var(--gap-card);
+}
+
+.category-card {
+  display: block;
+  height: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base) var(--easing-bounce),
+    box-shadow var(--duration-base) var(--easing-base);
+}
+
+.category-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.category-card__icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+
+.category-card__icon-wrap--sleep {
+  background-color: var(--color-sky-soft);
+}
+
+.category-card__icon-wrap--meal {
+  background-color: var(--color-sunny-soft);
+}
+
+.category-card__icon-wrap--play {
+  background-color: var(--color-turquoise-soft);
+}
+
+.category-card__icon-wrap--talk {
+  background-color: var(--color-pink-soft);
+}
+
+.category-card__icon-wrap--house {
+  background-color: var(--color-coral-soft);
+}
+
+.category-card__icon-wrap--ai {
+  background-color: var(--color-lavender-soft);
+}
+
+.category-card__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.category-card__title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.category-card__desc {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}

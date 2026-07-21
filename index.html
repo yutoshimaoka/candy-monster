@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Candy Monster｜新米ママのための、AI × 育児コミュニティ</title>
+    <meta
+      name="description"
+      content="初めての育児の「どうしよう？」に、すぐ試せるヒントを。育児情報・AI活用・ママ同士のコミュニティで、あなたらしい子育てを応援します。"
+    />
+    <meta property="og:title" content="Candy Monster｜新米ママのための、AI × 育児コミュニティ" />
+    <meta
+      property="og:description"
+      content="AIとみんなの知恵で、育児をもっとラクに、もっと楽しく。すぐ試せるヒントが見つかる育児コミュニティです。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- Webフォントはレンダーをブロックしないよう非同期で読み込む（フォールバックは system-ui） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
+      />
+    </noscript>
+    <!-- CSS は @import を使わずセクションごとに link で読み込む（Vite dev の HMR 対策） -->
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/button.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/hero.css" />
+    <link rel="stylesheet" href="/styles/worries.css" />
+    <link rel="stylesheet" href="/styles/categories.css" />
+    <link rel="stylesheet" href="/styles/try.css" />
+    <link rel="stylesheet" href="/styles/ai.css" />
+    <link rel="stylesheet" href="/styles/ages.css" />
+    <link rel="stylesheet" href="/styles/voices.css" />
+    <link rel="stylesheet" href="/styles/posts.css" />
+    <link rel="stylesheet" href="/styles/community.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
+    <!-- ============================================ -->
+    <!-- アイコンスプライト（装飾目的のため aria-hidden で参照する） -->
+    <!-- ============================================ -->
+    <svg class="visually-hidden" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24">
+          <path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z" />
+        </symbol>
+        <symbol id="icon-bowl" viewBox="0 0 24 24">
+          <path d="M3 11h18a9 9 0 01-18 0zM12 11V4M9 6.5h6" />
+        </symbol>
+        <symbol id="icon-blocks" viewBox="0 0 24 24">
+          <path d="M4 13h7v7H4zM13 13h7v7h-7zM8.5 4h7v7h-7z" />
+        </symbol>
+        <symbol id="icon-chat" viewBox="0 0 24 24">
+          <path d="M20 15a2 2 0 01-2 2H8l-4 4V6a2 2 0 012-2h12a2 2 0 012 2z" />
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 7.5V12l3 2" />
+        </symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24">
+          <path
+            d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"
+          />
+        </symbol>
+        <symbol id="icon-sparkle" viewBox="0 0 24 24">
+          <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" />
+          <path d="M18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+          <path d="M4 12.5l5 5L20 6.5" />
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 11v5M12 8h.01" />
+        </symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24">
+          <rect x="3.5" y="5.5" width="17" height="15" rx="2" />
+          <path d="M3.5 10h17M8 3.5v4M16 3.5v4" />
+        </symbol>
+        <symbol id="icon-book" viewBox="0 0 24 24">
+          <path d="M4 5.5A2 2 0 016 3.5h13v14H6a2 2 0 00-2 2z" />
+          <path d="M4 19.5a2 2 0 012-2h13v3H6a2 2 0 01-2-1z" />
+        </symbol>
+        <symbol id="icon-list" viewBox="0 0 24 24">
+          <path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" />
+        </symbol>
+        <symbol id="icon-discord" viewBox="0 0 24 24">
+          <path
+            d="M19.3 5.6A16 16 0 0015.4 4.4l-.2.4a12 12 0 00-6.4 0l-.2-.4a16 16 0 00-3.9 1.2C2.2 9.3 1.5 12.9 1.9 16.4a16 16 0 004.8 2.4l.9-1.5a10 10 0 01-1.6-.8l.4-.3a11 11 0 009.6 0l.4.3a10 10 0 01-1.6.8l.9 1.5a16 16 0 004.8-2.4c.4-4-.7-7.6-2.2-10.8zM8.6 14.3c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2zm6.8 0c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2z"
+            fill="currentColor"
+            stroke="none"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- ============================================ -->
+    <!-- ヘッダー -->
+    <!-- ============================================ -->
+    <header class="header">
+      <div class="header__inner container">
+        <a class="header__logo" href="/">
+          <span class="header__logo-name">Candy Monster</span>
+          <span class="header__logo-sub">新米ママのための、AI × 育児コミュニティ</span>
+        </a>
+
+        <nav class="header__nav" aria-label="グローバルナビゲーション">
+          <ul class="header__nav-list">
+            <li><a class="header__nav-link" href="#worries">悩みから探す</a></li>
+            <li><a class="header__nav-link" href="#categories">カテゴリー</a></li>
+            <li><a class="header__nav-link" href="#ages">年齢から探す</a></li>
+            <li><a class="header__nav-link" href="#ai">AI活用</a></li>
+            <li><a class="header__nav-link" href="#voices">みんなの体験</a></li>
+            <!-- TODO: マイページは会員機能の実装後にリンクする（13_initial-site-spec.md） -->
+            <li><a class="header__nav-link" href="/mypage/">マイページ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <!-- TODO: Discordの招待URLが未定のため href 未設定。確定後に設定する -->
+          <a class="button button--discord header__discord">
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-discord" />
+            </svg>
+            コミュニティ
+          </a>
+
+          <button
+            class="header__toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="global-drawer"
+          >
+            <span class="visually-hidden">メニューを開く</span>
+            <svg class="header__toggle-icon header__toggle-icon--open" aria-hidden="true" focusable="false">
+              <use href="#icon-menu" />
+            </svg>
+            <svg class="header__toggle-icon header__toggle-icon--close" aria-hidden="true" focusable="false">
+              <use href="#icon-close" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="header__drawer" id="global-drawer" hidden>
+        <div class="container">
+          <nav aria-label="モバイルナビゲーション">
+            <ul class="header__drawer-list">
+              <li><a class="header__drawer-link" href="#worries">悩みから探す</a></li>
+              <li><a class="header__drawer-link" href="#categories">カテゴリー</a></li>
+              <li><a class="header__drawer-link" href="#ages">年齢から探す</a></li>
+              <li><a class="header__drawer-link" href="#ai">AI活用</a></li>
+              <li><a class="header__drawer-link" href="#voices">みんなの体験</a></li>
+              <!-- TODO: マイページは会員機能の実装後にリンクする -->
+              <li><a class="header__drawer-link" href="/mypage/">マイページ</a></li>
+            </ul>
+          </nav>
+          <!-- TODO: Discordの招待URLが未定のため href 未設定 -->
+          <a class="button button--discord button--full header__drawer-cta">
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-discord" />
+            </svg>
+            Candy Monsterコミュニティに参加する
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============================================ -->
+      <!-- 1. ファーストビュー -->
+      <!-- ============================================ -->
+      <section class="hero">
+        <div class="hero__inner container">
+          <div class="hero__body">
+            <p class="hero__badge">
+              <span class="hero__badge-dot"></span>
+              新米ママのための、AI × 育児コミュニティ
+            </p>
+            <h1 class="hero__title">
+              AIとみんなの知恵で、<br />育児をもっと<span class="hero__title-accent">ラク</span
+              >に、もっと楽しく。
+            </h1>
+            <p class="hero__lead">
+              初めての育児の「どうしよう？」に、すぐ試せるヒントを。育児情報・AI活用・ママ同士のコミュニティで、あなたらしい子育てを応援します。
+            </p>
+            <div class="hero__actions">
+              <a class="button" href="#worries">
+                悩みから探す
+                <svg class="button__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+              <a class="button button--secondary" href="#try">試してみるを見つける</a>
+              <a class="button button--secondary" href="#community">コミュニティを見る</a>
+            </div>
+          </div>
+
+          <!-- 装飾。写真は未入稿のため、有機的シェイプで代替している -->
+          <!-- TODO: 親子写真が用意でき次第、WebP（1x/2x srcset）で差し替える -->
+          <div class="hero__visual" aria-hidden="true">
+            <span class="hero__decor hero__decor--sun"></span>
+            <span class="hero__decor hero__decor--mint"></span>
+            <span class="hero__decor hero__decor--grape"></span>
+            <svg class="hero__blob" viewBox="0 0 400 380" role="presentation" focusable="false">
+              <path
+                d="M204 14c58 6 112 38 143 88 30 50 37 118 8 168-30 50-96 82-158 88-62 5-119-16-155-58C6 258-8 194 12 141 32 88 86 46 137 26c22-8 45-14 67-12z"
+                fill="#FDEEF2"
+              />
+              <path
+                d="M212 74c42 5 82 30 104 66 21 36 25 84 4 120-22 36-70 59-115 63-45 4-86-12-112-42-27-31-37-77-22-115 14-38 53-68 90-83 16-6 33-11 51-9z"
+                fill="#E6F6F5"
+              />
+              <circle cx="163" cy="176" r="13" fill="#2B2430" />
+              <circle cx="239" cy="176" r="13" fill="#2B2430" />
+              <path
+                d="M168 226c10 14 26 22 43 22s33-8 43-22"
+                fill="none"
+                stroke="#2B2430"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <circle cx="128" cy="212" r="14" fill="#F0562E" opacity="0.35" />
+              <circle cx="274" cy="212" r="14" fill="#F0562E" opacity="0.35" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 2. 今、どんなことで困ってる？ -->
+      <!-- ============================================ -->
+      <section class="section worries" id="worries">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">今、どんなことで困ってる？</h2>
+            <p class="section__lead">
+              気になることをひとつ選んでみてください。今のあなたに合いそうなヒントからご案内します。
+            </p>
+          </div>
+
+          <!-- TODO: 悩み別の一覧ページは未実装。ページ作成後にリンク先を確認する -->
+          <ul class="worries__list">
+            <li>
+              <a class="worry-card" href="/worries/sleep/">
+                <span class="worry-card__emoji worry-card__emoji--sleep">
+                  <svg class="worry-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-moon" />
+                  </svg>
+                </span>
+                <span class="worry-card__text">なかなか寝てくれない</span>
+                <svg class="worry-card__arrow" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="worry-card" href="/worries/meal/">
+                <span class="worry-card__emoji worry-card__emoji--meal">
+                  <svg class="worry-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-bowl" />
+                  </svg>
+                </span>
+                <span class="worry-card__text">ごはんを食べてくれない</span>
+                <svg class="worry-card__arrow" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="worry-card" href="/worries/play/">
+                <span class="worry-card__emoji worry-card__emoji--play">
+                  <svg class="worry-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-blocks" />
+                  </svg>
+                </span>
+                <span class="worry-card__text">何して遊ぼう？</span>
+                <svg class="worry-card__arrow" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="worry-card" href="/worries/talk/">
+                <span class="worry-card__emoji worry-card__emoji--talk">
+                  <svg class="worry-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-chat" />
+                  </svg>
+                </span>
+                <span class="worry-card__text">イヤイヤにどう声をかける？</span>
+                <svg class="worry-card__arrow" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="worry-card" href="/worries/housework/">
+                <span class="worry-card__emoji worry-card__emoji--house">
+                  <svg class="worry-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-clock" />
+                  </svg>
+                </span>
+                <span class="worry-card__text">家事と育児が回らない</span>
+                <svg class="worry-card__arrow" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="worry-card" href="/worries/talk-to-someone/">
+                <span class="worry-card__emoji worry-card__emoji--alone">
+                  <svg class="worry-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-heart" />
+                  </svg>
+                </span>
+                <span class="worry-card__text">誰かに聞いてほしい</span>
+                <svg class="worry-card__arrow" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow-right" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 3. カテゴリーから探す -->
+      <!-- ============================================ -->
+      <section class="section section--subtle categories" id="categories">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">カテゴリーから探す</h2>
+            <p class="section__lead">テーマごとに、育児の工夫とAIの使い方をまとめています。</p>
+          </div>
+
+          <!-- TODO: カテゴリーページは未実装。ページ作成後にリンク先を確認する -->
+          <ul class="categories__list">
+            <li>
+              <a class="category-card" href="/categories/sleep/">
+                <span class="category-card__icon-wrap category-card__icon-wrap--sleep">
+                  <svg class="category-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-moon" />
+                  </svg>
+                </span>
+                <h3 class="category-card__title">睡眠・生活リズム</h3>
+                <p class="category-card__desc">夜泣き、寝かしつけ、昼寝、朝夜のルーティン</p>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="/categories/meal/">
+                <span class="category-card__icon-wrap category-card__icon-wrap--meal">
+                  <svg class="category-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-bowl" />
+                  </svg>
+                </span>
+                <h3 class="category-card__title">ごはん</h3>
+                <p class="category-card__desc">離乳食、幼児食、好き嫌い、食べムラ、献立</p>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="/categories/play/">
+                <span class="category-card__icon-wrap category-card__icon-wrap--play">
+                  <svg class="category-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-blocks" />
+                  </svg>
+                </span>
+                <h3 class="category-card__title">遊び・知育</h3>
+                <p class="category-card__desc">室内遊び、外遊び、知育、工作、絵本</p>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="/categories/talk/">
+                <span class="category-card__icon-wrap category-card__icon-wrap--talk">
+                  <svg class="category-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-chat" />
+                  </svg>
+                </span>
+                <h3 class="category-card__title">ことば・関わり方</h3>
+                <p class="category-card__desc">声かけ、イヤイヤ、きょうだい、感情</p>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="/categories/housework/">
+                <span class="category-card__icon-wrap category-card__icon-wrap--house">
+                  <svg class="category-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-clock" />
+                  </svg>
+                </span>
+                <h3 class="category-card__title">家事・時短・両立</h3>
+                <p class="category-card__desc">家事、仕事との両立、予定管理、ママの余白づくり</p>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="/categories/ai/">
+                <span class="category-card__icon-wrap category-card__icon-wrap--ai">
+                  <svg class="category-card__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-sparkle" />
+                  </svg>
+                </span>
+                <h3 class="category-card__title">AI活用ガイド</h3>
+                <p class="category-card__desc">ChatGPT等の基本、プロンプト、安全な使い方</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 4. 今日、ひとつ試してみない？ -->
+      <!-- ============================================ -->
+      <section class="section try" id="try">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">今日、ひとつ試してみない？</h2>
+            <p class="section__lead">
+              読むだけで終わらせず、小さな一歩から。「あとで試す」に入れておけば、マイページでいつでも振り返れます。
+            </p>
+          </div>
+
+          <ul class="try__list">
+            <li>
+              <article class="try-card">
+                <div class="try-card__head">
+                  <span class="try-card__tag try-card__tag--age">1〜3歳</span>
+                  <span class="try-card__tag">目安：今日から</span>
+                </div>
+                <h3 class="try-card__title">寝る前10分、同じ順番で過ごしてみる</h3>
+                <p class="try-card__desc">
+                  お風呂 → 絵本 → 電気を暗くする、のように毎日同じ流れにします。順番が決まっていると、子どもが「次は寝る時間」と気づきやすくなります。
+                </p>
+                <p class="try-card__effect">
+                  <svg class="try-card__effect-icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-check" />
+                  </svg>
+                  寝る前のぐずりが減り、寝かしつけの見通しが立ちやすくなります
+                </p>
+                <div class="try-card__action">
+                  <button class="button button--full try-card__button" type="button" aria-pressed="false">
+                    <svg class="button__icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-check" />
+                    </svg>
+                    <span class="try-card__button-label--todo">試してみる</span>
+                    <span class="try-card__button-label--done">あとで試すに追加しました</span>
+                  </button>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="try-card">
+                <div class="try-card__head">
+                  <span class="try-card__tag try-card__tag--age">2〜4歳</span>
+                  <span class="try-card__tag">目安：5分</span>
+                </div>
+                <h3 class="try-card__title">朝の支度を3ステップに減らしてみる</h3>
+                <p class="try-card__desc">
+                  「着替える・顔を洗う・カバンを持つ」だけに絞ります。やることが少ないほど、子どもは自分で動きやすくなります。
+                </p>
+                <p class="try-card__effect">
+                  <svg class="try-card__effect-icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-check" />
+                  </svg>
+                  声かけの回数が減り、朝の慌ただしさがやわらぎます
+                </p>
+                <div class="try-card__action">
+                  <button class="button button--full try-card__button" type="button" aria-pressed="false">
+                    <svg class="button__icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-check" />
+                    </svg>
+                    <span class="try-card__button-label--todo">試してみる</span>
+                    <span class="try-card__button-label--done">あとで試すに追加しました</span>
+                  </button>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="try-card">
+                <div class="try-card__head">
+                  <span class="try-card__tag try-card__tag--age">0〜2歳</span>
+                  <span class="try-card__tag">目安：1分</span>
+                </div>
+                <h3 class="try-card__title">「できたこと」を1日ひとつだけ書き留める</h3>
+                <p class="try-card__desc">
+                  子どものことでも、自分のことでも大丈夫です。うまくいかない日が続くときほど、小さな変化が見えるようになります。
+                </p>
+                <p class="try-card__effect">
+                  <svg class="try-card__effect-icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-check" />
+                  </svg>
+                  比べて落ち込む時間が減り、自分の育児のペースがつかめます
+                </p>
+                <div class="try-card__action">
+                  <button class="button button--full try-card__button" type="button" aria-pressed="false">
+                    <svg class="button__icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-check" />
+                    </svg>
+                    <span class="try-card__button-label--todo">試してみる</span>
+                    <span class="try-card__button-label--done">あとで試すに追加しました</span>
+                  </button>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 5. AIと育児、こんなふうに使えるよ -->
+      <!-- ============================================ -->
+      <section class="section ai" id="ai">
+        <div class="container">
+          <div class="section__head">
+            <p class="ai__label">
+              <svg class="ai__label-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-sparkle" />
+              </svg>
+              AIと一緒に考えてみよう
+            </p>
+            <h2 class="section__title">AIと育児、こんなふうに使えるよ</h2>
+            <p class="section__lead">
+              むずかしい設定は必要ありません。「考えるのが大変なこと」を、少し手伝ってもらうところから始められます。
+            </p>
+          </div>
+
+          <ul class="ai__list">
+            <li>
+              <p class="ai-card">
+                <svg class="ai-card__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-calendar" />
+                </svg>
+                <span class="ai-card__text">1週間の献立を一緒に考える</span>
+              </p>
+            </li>
+            <li>
+              <p class="ai-card">
+                <svg class="ai-card__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-blocks" />
+                </svg>
+                <span class="ai-card__text">雨の日の遊びを考える</span>
+              </p>
+            </li>
+            <li>
+              <p class="ai-card">
+                <svg class="ai-card__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-chat" />
+                </svg>
+                <span class="ai-card__text">子ども向けの説明に言い換える</span>
+              </p>
+            </li>
+            <li>
+              <p class="ai-card">
+                <svg class="ai-card__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-list" />
+                </svg>
+                <span class="ai-card__text">朝の支度ルーティンを作る</span>
+              </p>
+            </li>
+            <li>
+              <p class="ai-card">
+                <svg class="ai-card__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-book" />
+                </svg>
+                <span class="ai-card__text">絵本やクイズを作る</span>
+              </p>
+            </li>
+          </ul>
+
+          <p class="ai__note">
+            <svg class="ai__note-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-info" />
+            </svg>
+            <span>
+              医療・発達・アレルギー・事故や安全に関わる判断は、AIだけに頼らず、かかりつけ医や自治体の窓口にご相談ください。
+            </span>
+          </p>
+
+          <div class="ai__action">
+            <!-- TODO: AI活用ガイド一覧ページは未実装。ページ作成後にリンク先を確認する -->
+            <a class="button button--ai" href="/categories/ai/">
+              AIでできることを見る
+              <svg class="button__icon" aria-hidden="true" focusable="false">
+                <use href="#icon-arrow-right" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 6. 年齢から探す -->
+      <!-- ============================================ -->
+      <section class="section ages" id="ages">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">年齢から探す</h2>
+            <p class="section__lead">
+              同じ悩みでも、月齢・年齢によって試しやすい方法は変わります。
+            </p>
+          </div>
+
+          <!-- TODO: 年齢別ページは未実装。ページ作成後にリンク先を確認する -->
+          <ul class="ages__list">
+            <li>
+              <a class="age-chip" href="/ages/0-6m/">
+                <span class="age-chip__label">0〜6か月</span>
+                <span class="age-chip__sub">ねんね・授乳</span>
+              </a>
+            </li>
+            <li>
+              <a class="age-chip" href="/ages/7-12m/">
+                <span class="age-chip__label">7〜12か月</span>
+                <span class="age-chip__sub">離乳食・後追い</span>
+              </a>
+            </li>
+            <li>
+              <a class="age-chip" href="/ages/1-2y/">
+                <span class="age-chip__label">1〜2歳</span>
+                <span class="age-chip__sub">歩く・イヤイヤ</span>
+              </a>
+            </li>
+            <li>
+              <a class="age-chip" href="/ages/3-4y/">
+                <span class="age-chip__label">3〜4歳</span>
+                <span class="age-chip__sub">おしゃべり・園生活</span>
+              </a>
+            </li>
+            <li>
+              <a class="age-chip" href="/ages/5-6y/">
+                <span class="age-chip__label">5〜6歳</span>
+                <span class="age-chip__sub">就学準備</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 7. みんなが試してよかったこと -->
+      <!-- ============================================ -->
+      <section class="section section--subtle voices" id="voices">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">みんなが試してよかったこと</h2>
+            <p class="section__lead">
+              うまくいったことも、合わなかったことも。どちらも次の誰かのヒントになります。
+            </p>
+          </div>
+
+          <!-- TODO: 以下はデザイン確認用のサンプル文言です。 -->
+          <!-- 実際の投稿を集めるまで公開しないこと（実在しない体験談を掲載しないため） -->
+          <ul class="voices__list">
+            <li>
+              <article class="voice-card">
+                <p class="voice-card__result voice-card__result--done">できた</p>
+                <p class="voice-card__text">
+                  寝る前の順番を固定したら、3日目くらいから自分から布団に行くようになりました。完璧にはできない日もあるけど、気持ちがラクになりました。
+                </p>
+                <p class="voice-card__meta">
+                  <span class="voice-card__avatar" aria-hidden="true">1歳</span>
+                  <span>1歳の子のママ／睡眠・生活リズム</span>
+                </p>
+              </article>
+            </li>
+            <li>
+              <article class="voice-card">
+                <p class="voice-card__result voice-card__result--changed">少し変えてみた</p>
+                <p class="voice-card__text">
+                  献立をAIに考えてもらったら品数が多すぎたので、「3品まで・15分で作れる」と条件を足したらちょうどよくなりました。
+                </p>
+                <p class="voice-card__meta">
+                  <span class="voice-card__avatar" aria-hidden="true">2歳</span>
+                  <span>2歳の子のママ／ごはん</span>
+                </p>
+              </article>
+            </li>
+            <li>
+              <article class="voice-card">
+                <p class="voice-card__result voice-card__result--notfit">合わなかった</p>
+                <p class="voice-card__text">
+                  朝の支度を3ステップにしてみましたが、うちの子には順番より「先に着替え」だけ決める方が合っていました。合わない方法が分かったのも収穫です。
+                </p>
+                <p class="voice-card__meta">
+                  <span class="voice-card__avatar" aria-hidden="true">3歳</span>
+                  <span>3歳の子のママ／家事・時短・両立</span>
+                </p>
+              </article>
+            </li>
+          </ul>
+
+          <p class="voices__note">
+            ※ 個人の体験です。同じ方法がすべてのお子さんに合うとは限りません。
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 8. おすすめ・新着記事 -->
+      <!-- ============================================ -->
+      <section class="section posts" id="posts">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">おすすめ・新着記事</h2>
+          </div>
+
+          <!-- TODO: 記事は未入稿。記事ページ作成後にリンク先とスラッグを確認する -->
+          <ul class="posts__list">
+            <li>
+              <a class="post-card" href="/articles/sleep-1y-night-waking/">
+                <span class="post-card__labels">
+                  <span class="post-card__type post-card__type--solve">悩み解決</span>
+                  <span class="post-card__category">睡眠・生活リズム</span>
+                </span>
+                <h3 class="post-card__title">1歳の子が夜なかなか寝ないときに試したいこと</h3>
+                <p class="post-card__excerpt">
+                  寝ない理由は「体力が余っている」だけとは限りません。確認したいポイントと、今夜から試せる方法を整理します。
+                </p>
+                <span class="post-card__meta">
+                  <span>1〜2歳</span>
+                  <span>約6分で読めます</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="post-card" href="/articles/toddler-tantrum-words/">
+                <span class="post-card__labels">
+                  <span class="post-card__type post-card__type--solve">悩み解決</span>
+                  <span class="post-card__category">ことば・関わり方</span>
+                </span>
+                <h3 class="post-card__title">2歳のイヤイヤ期、どう声をかける？</h3>
+                <p class="post-card__excerpt">
+                  「ダメ」と言わずに伝える言い換えと、余裕がないときに使える短い声かけを紹介します。
+                </p>
+                <span class="post-card__meta">
+                  <span>1〜2歳</span>
+                  <span>約5分で読めます</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="post-card" href="/articles/ai-weekly-meal-plan/">
+                <span class="post-card__labels">
+                  <span class="post-card__type post-card__type--ai">AI活用</span>
+                  <span class="post-card__category">ごはん</span>
+                </span>
+                <h3 class="post-card__title">ChatGPTで1週間の子どもごはんを考える方法</h3>
+                <p class="post-card__excerpt">
+                  コピペで使えるプロンプト付き。家にある食材や苦手なものを伝えて、自分の家に合う献立にしていきます。
+                </p>
+                <span class="post-card__meta">
+                  <span>1〜6歳</span>
+                  <span>約7分で読めます</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="post-card" href="/articles/ai-rainy-day-play/">
+                <span class="post-card__labels">
+                  <span class="post-card__type post-card__type--ai">AI活用</span>
+                  <span class="post-card__category">遊び・知育</span>
+                </span>
+                <h3 class="post-card__title">雨の日の遊びをAIに考えてもらう方法</h3>
+                <p class="post-card__excerpt">
+                  年齢と手持ちのものを伝えるだけ。「準備がラクな順」に出してもらうのがコツです。
+                </p>
+                <span class="post-card__meta">
+                  <span>1〜6歳</span>
+                  <span>約5分で読めます</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="post-card" href="/articles/bedtime-routine-7days/">
+                <span class="post-card__labels">
+                  <span class="post-card__type post-card__type--try">試してみる</span>
+                  <span class="post-card__category">睡眠・生活リズム</span>
+                </span>
+                <h3 class="post-card__title">寝る前ルーティンを7日間試してみよう</h3>
+                <p class="post-card__excerpt">
+                  やること・必要なもの・続けるコツまで。合わなかったときの代替案も用意しています。
+                </p>
+                <span class="post-card__meta">
+                  <span>1〜3歳</span>
+                  <span>約6分で読めます</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="post-card" href="/articles/ai-parenting-basics/">
+                <span class="post-card__labels">
+                  <span class="post-card__type post-card__type--guide">安心ガイド</span>
+                  <span class="post-card__category">AI活用ガイド</span>
+                </span>
+                <h3 class="post-card__title">AIに育児相談するとき、任せていいこと・ダメなこと</h3>
+                <p class="post-card__excerpt">
+                  判断の線引きと、子どもの個人情報を入力するときの注意点をまとめています。
+                </p>
+                <span class="post-card__meta">
+                  <span>全年齢</span>
+                  <span>約8分で読めます</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="posts__action">
+            <!-- TODO: 記事一覧ページは未実装 -->
+            <a class="button button--secondary" href="/articles/">
+              記事をもっと見る
+              <svg class="button__icon" aria-hidden="true" focusable="false">
+                <use href="#icon-arrow-right" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 9. DiscordコミュニティCTA -->
+      <!-- ============================================ -->
+      <section class="section community" id="community">
+        <div class="container">
+          <div class="community__box">
+            <div class="community__content">
+              <p class="community__avatars" aria-hidden="true">
+                <span class="community__avatar">M</span>
+                <span class="community__avatar">A</span>
+                <span class="community__avatar">Y</span>
+                <span class="community__avatar">K</span>
+                <span class="community__avatar">+</span>
+              </p>
+              <h2 class="community__title">ひとりで抱えなくて大丈夫。</h2>
+              <p class="community__text">
+                育児の「これってうちだけ？」を、同じ立場のママと話せる場所です。うまくいったことも、うまくいかなかったことも、気軽に共有できます。
+              </p>
+              <div class="community__action">
+                <!-- TODO: Discordの招待URLが未定のため href 未設定。確定後に設定する -->
+                <a class="button button--discord">
+                  <svg class="button__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-discord" />
+                  </svg>
+                  Candy Monsterコミュニティに参加する
+                </a>
+              </div>
+              <p class="community__note">参加は無料です。読むだけの参加も歓迎しています。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- 10. フッター -->
+    <!-- ============================================ -->
+    <footer class="footer">
+      <div class="footer__inner container">
+        <div class="footer__brand">
+          <p class="footer__brand-name">Candy Monster</p>
+          <p class="footer__brand-sub">新米ママのための、AI × 育児コミュニティ</p>
+        </div>
+
+        <div class="footer__nav-group">
+          <nav aria-label="サイトについて">
+            <h2 class="footer__nav-title">サイトについて</h2>
+            <ul class="footer__list">
+              <!-- TODO: 下層ページは未実装。ページ作成後にリンク先を確認する -->
+              <li class="footer__item">
+                <a class="footer__link" href="/about/">Candy Monsterについて</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="/operator/">運営者情報</a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="コンテンツ">
+            <h2 class="footer__nav-title">コンテンツ</h2>
+            <ul class="footer__list">
+              <li class="footer__item"><a class="footer__link" href="#categories">カテゴリー</a></li>
+              <li class="footer__item">
+                <a class="footer__link" href="/categories/ai/">AI活用ガイド</a>
+              </li>
+              <li class="footer__item"><a class="footer__link" href="#community">コミュニティ</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-label="規約">
+            <h2 class="footer__nav-title">規約</h2>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a class="footer__link" href="/privacy/">プライバシーポリシー</a>
+              </li>
+              <li class="footer__item"><a class="footer__link" href="/terms/">利用規約</a></li>
+              <li class="footer__item">
+                <a class="footer__link" href="/disclaimer/">免責事項</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer__bottom container">
+        <p class="footer__copyright">&copy; 2026 Candy Monster</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
+</html>

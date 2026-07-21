@@ -1,0 +1,21 @@
+## CSS ルール
+
+- セクションごとに CSS ファイルを分ける（例：`hero.css` / `features.css`）
+- カラー・余白・サイズはすべて `DESIGN.md` の `:root` 変数を使い、直値を書かない
+- class 名は BEM（Block__Element--Modifier）で統一する。**粒度は「1セクション＝1 Block」を基本**とし、セクション内で再利用する部品（カード・ボタン等）は独立した Block として切り出す
+- 単位のルール：
+  - フォントサイズは `rem`、ボーダー・シャドウは `px` を使い、混在させない
+  - `line-height` は単位なしの数値（例：`1.7`）にする
+  - `letter-spacing` は `em`（フォントサイズ比で追従させるため）
+  - メディアクエリのブレークポイントは `em`（ブラウザのズーム・文字サイズ変更に追従するため）
+  - `margin` / `padding` などの余白は `DESIGN.md` の `:root` 変数（`rem`ベース）を使う
+- リセット CSS（または `*, *::before, *::after { box-sizing: border-box; }`）を先頭に適用する
+- レスポンシブは、値の伸縮とレイアウト構造で手法を使い分ける：
+  - **値の伸縮**（フォントサイズ・余白・要素の最大幅など）は `clamp()` で fluid に実装する（例：`font-size: clamp(1.125rem, 1rem + 2vw, 3rem)`）。`vw` 換算は `DESIGN.md` に記載の基準ビューポート幅（SP / PC）を前提に算出する
+  - **カードの段組み**（特徴一覧・メニュー等）は `grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr))` で自動折り返しにする。`min(240px, 100%)` で狭い画面でのはみ出しを防ぐ
+  - **タグ・ボタンなど要素の折り返し**は `display: flex; flex-wrap: wrap;` で実装する
+  - **PC / SP で並び順が変わる箇所**は `grid-template-areas` で切り替える（メディアクエリごとに areas を定義し直す）。`display: contents` + `order` は挙動が不安定なため使わない
+  - レイアウト構造が根本的に変わる箇所（1カラム↔多カラム等）のみ、必要に応じてブレークポイント（メディアクエリ）を併用してよい
+- `gap` も `clamp()` を併用すると、隙間が画面幅に応じて自然に伸縮する
+- CSS の `@import` は使わない（Vite dev の HMR で更新されず、旧CSSで検証してしまう事故が起きる）。分割したCSSは各 `<link>` で読み込むか、ビルドでバンドルする
+- Web フォントには `font-display: swap` を指定する

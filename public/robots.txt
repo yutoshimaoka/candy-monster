@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# TODO: 独自ドメイン確定後に Sitemap の URL を追記する

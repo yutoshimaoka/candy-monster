@@ -1,0 +1,132 @@
+/*
+ * 「今日、ひとつ試してみない？」
+ * 「試してみる」カードは Candy Monster の象徴的UI（11_design-direction.md）
+ */
+
+.try__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--gap-card);
+}
+
+.try-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* キャンディのモチーフ */
+.try-card::before {
+  position: absolute;
+  top: -2.5rem;
+  right: -2.5rem;
+  width: 6rem;
+  height: 6rem;
+  content: '';
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.try-card__head {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2xs);
+}
+
+.try-card__tag {
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.try-card__tag--age {
+  background-color: var(--color-turquoise-soft);
+}
+
+.try-card__title {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.try-card__desc {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.try-card__effect {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: flex-start;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-cream);
+  border-radius: var(--radius-md);
+}
+
+.try-card__effect-icon {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.2rem;
+  fill: none;
+  stroke: var(--color-coral-strong);
+  stroke-width: 1.75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.try-card__action {
+  margin-top: var(--spacing-lg);
+}
+
+/* 「試してみる」を押したときの軽い演出（過度にしない） */
+.try-card__button[aria-pressed='true'] {
+  background-color: var(--color-turquoise-strong);
+  box-shadow: var(--shadow-card);
+}
+
+.try-card__button-label--done {
+  display: none;
+}
+
+.try-card__button[aria-pressed='true'] .try-card__button-label--done {
+  display: inline;
+}
+
+.try-card__button[aria-pressed='true'] .try-card__button-label--todo {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .try-card__button[aria-pressed='true'] .button__icon {
+    animation: try-pop var(--duration-slow) var(--easing-bounce);
+  }
+}
+
+@keyframes try-pop {
+  0% {
+    transform: scale(0.6);
+  }
+
+  60% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

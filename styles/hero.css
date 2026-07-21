@@ -1,0 +1,146 @@
+/*
+ * ファーストビュー
+ * 「多色を大胆に + 丸み・波・しずく」の方向性を、写真なしで
+ * CSS/SVG の有機的シェイプとして表現する（11_design-direction.md）
+ */
+
+.hero {
+  position: relative;
+  padding-block: var(--spacing-2xl) var(--spacing-section);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: var(--z-base);
+  display: grid;
+  gap: var(--spacing-2xl);
+}
+
+.hero__badge {
+  display: inline-flex;
+  gap: var(--spacing-2xs);
+  align-items: center;
+  align-self: start;
+  padding: var(--spacing-2xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.hero__badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--color-candy-pink-vivid);
+  border-radius: var(--radius-pill);
+}
+
+.hero__title {
+  margin-top: var(--spacing-lg);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.hero__title-accent {
+  color: var(--color-cta);
+}
+
+.hero__lead {
+  max-width: 34rem;
+  margin-top: var(--spacing-lg);
+  color: var(--color-text-secondary);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+}
+
+/* ---- 装飾シェイプ ---- */
+
+.hero__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 17rem;
+}
+
+.hero__blob {
+  width: min(100%, 24rem);
+  height: auto;
+}
+
+/* しずく・円のモチーフを散らす */
+.hero__decor {
+  position: absolute;
+  border-radius: var(--radius-pill);
+}
+
+.hero__decor--sun {
+  top: 8%;
+  left: 4%;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--color-sunny-vivid);
+}
+
+.hero__decor--mint {
+  right: 8%;
+  bottom: 12%;
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: var(--color-turquoise-vivid);
+}
+
+.hero__decor--grape {
+  right: 18%;
+  bottom: 4%;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--color-lavender-vivid);
+}
+
+/* 背景の大きなにじみ */
+.hero::before,
+.hero::after {
+  position: absolute;
+  content: '';
+  border-radius: var(--radius-pill);
+  opacity: 0.5;
+  filter: blur(60px);
+}
+
+.hero::before {
+  top: -6rem;
+  right: -4rem;
+  width: 22rem;
+  height: 22rem;
+  background-color: var(--color-bg-subtle);
+}
+
+.hero::after {
+  bottom: -8rem;
+  left: -6rem;
+  width: 18rem;
+  height: 18rem;
+  background-color: var(--color-turquoise-soft);
+}
+
+@media (width >= 48em) {
+  .hero__inner {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+  }
+
+  .hero__visual {
+    min-height: 24rem;
+  }
+}
