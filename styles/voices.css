@@ -1,0 +1,80 @@
+/*
+ * 「みんなが試してよかったこと」
+ * 成功談だけに偏らせない。「合わなかった」も価値ある体験として扱う（15_article-types.md）
+ */
+
+.voices__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--gap-card);
+}
+
+.voice-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.voice-card__result {
+  display: inline-flex;
+  gap: var(--spacing-2xs);
+  align-items: center;
+  align-self: flex-start;
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-pill);
+}
+
+/* 結果は色だけでなくラベル文言でも区別する（色覚特性への配慮） */
+.voice-card__result--done {
+  color: var(--color-turquoise-text);
+  background-color: var(--color-turquoise-soft);
+}
+
+.voice-card__result--changed {
+  color: var(--color-amber-text);
+  background-color: var(--color-sunny-soft);
+}
+
+.voice-card__result--notfit {
+  color: var(--color-text-secondary);
+  background-color: var(--color-neutral-soft);
+}
+
+.voice-card__text {
+  margin-top: var(--spacing-md);
+  line-height: var(--line-height-base);
+}
+
+.voice-card__meta {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.voice-card__avatar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.voices__note {
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+}

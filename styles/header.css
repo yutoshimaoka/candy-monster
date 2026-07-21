@@ -1,0 +1,157 @@
+/*
+ * ヘッダー：ロゴ + グローバルナビ + Discord CTA
+ * SP はハンバーガーでドロワー展開する
+ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-bg-header);
+  border-bottom: var(--border-width) solid var(--color-border);
+  backdrop-filter: blur(8px);
+}
+
+.header__inner {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4rem;
+}
+
+.header__logo {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  line-height: var(--line-height-tight);
+}
+
+.header__logo-name {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.header__logo-sub {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.header__discord {
+  display: none;
+}
+
+/* ---- ハンバーガー ---- */
+
+.header__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+}
+
+.header__toggle:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.header__toggle-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.header__toggle[aria-expanded='true'] .header__toggle-icon--open,
+.header__toggle[aria-expanded='false'] .header__toggle-icon--close {
+  display: none;
+}
+
+/* ---- ドロワー（SP） ---- */
+
+.header__drawer {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  z-index: var(--z-drawer);
+  padding-block: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--color-bg-base);
+  border-bottom: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.header__drawer[hidden] {
+  display: none;
+}
+
+.header__drawer-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__drawer-link {
+  display: block;
+  padding-block: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.header__drawer-link:hover {
+  color: var(--color-cta);
+}
+
+.header__drawer-cta {
+  margin-top: var(--spacing-lg);
+}
+
+@media (width >= 64em) {
+  .header__nav {
+    display: block;
+    margin-inline-start: auto;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .header__nav-link {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    transition: color var(--duration-fast) var(--easing-base);
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-cta);
+  }
+
+  .header__discord {
+    display: inline-flex;
+    min-height: 2.5rem;
+    padding-inline: var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .header__toggle,
+  .header__drawer {
+    display: none;
+  }
+}

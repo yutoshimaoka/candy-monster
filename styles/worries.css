@@ -1,0 +1,90 @@
+/*
+ * 「今、どんなことで困ってる？」
+ * 悩み起点の入口。トップページで最優先に置く（04_top-page-wireframe.md）
+ */
+
+.worries__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: var(--gap-card);
+}
+
+.worry-card {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  height: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base) var(--easing-bounce),
+    box-shadow var(--duration-base) var(--easing-base);
+}
+
+.worry-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.worry-card__emoji {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-pill);
+}
+
+.worry-card__emoji--sleep {
+  background-color: var(--color-sky-soft);
+}
+
+.worry-card__emoji--meal {
+  background-color: var(--color-sunny-soft);
+}
+
+.worry-card__emoji--play {
+  background-color: var(--color-turquoise-soft);
+}
+
+.worry-card__emoji--talk {
+  background-color: var(--color-pink-soft);
+}
+
+.worry-card__emoji--house {
+  background-color: var(--color-lavender-soft);
+}
+
+.worry-card__emoji--alone {
+  background-color: var(--color-coral-soft);
+}
+
+.worry-card__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.worry-card__text {
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+
+.worry-card__arrow {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-inline-start: auto;
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

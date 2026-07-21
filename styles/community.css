@@ -1,0 +1,86 @@
+/*
+ * DiscordコミュニティCTA
+ * 「人がいる」ことを感じさせるブロック（11_design-direction.md）
+ */
+
+.community__box {
+  position: relative;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-xl);
+}
+
+.community__box::before,
+.community__box::after {
+  position: absolute;
+  content: '';
+  border-radius: var(--radius-pill);
+  opacity: 0.35;
+}
+
+.community__box::before {
+  top: -3rem;
+  left: -2rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--color-sunny-vivid);
+}
+
+.community__box::after {
+  right: -3rem;
+  bottom: -4rem;
+  width: 12rem;
+  height: 12rem;
+  background-color: var(--color-turquoise-vivid);
+}
+
+.community__content {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.community__avatars {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.community__avatar {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-inline-start: -0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-bg-surface);
+  border: 2px solid var(--color-bg-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.community__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.community__text {
+  max-width: 36rem;
+  margin-inline: auto;
+  margin-top: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+.community__action {
+  margin-top: var(--spacing-xl);
+}
+
+.community__note {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}

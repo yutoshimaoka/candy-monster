@@ -1,0 +1,42 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z][a-z0-9]*(-[a-z0-9]+)*)?(--[a-z][a-z0-9]*(-[a-z0-9]+)*)?$",
+      {
+        "message": "class名はBEM（block__element--modifier / ケバブケース）で書いてください"
+      }
+    ],
+    "at-rule-disallowed-list": [
+      ["import"],
+      {
+        "message": "@import は使わず、<link> 分割かビルドでのバンドルにしてください（Vite dev の HMR で更新されないため）"
+      }
+    ],
+    "declaration-property-value-disallowed-list": [
+      {
+        "/^color$/": ["/^#/", "/^rgb/", "/^hsl/"],
+        "/^background-color$/": ["/^#/", "/^rgb/", "/^hsl/"],
+        "/^border-color$/": ["/^#/", "/^rgb/", "/^hsl/"],
+        "/^fill$/": ["/^#/", "/^rgb/", "/^hsl/"],
+        "/^stroke$/": ["/^#/", "/^rgb/", "/^hsl/"]
+      },
+      {
+        "message": "カラーは直値で書かず、DESIGN.md の :root 変数を var() で参照してください"
+      }
+    ],
+    "declaration-property-unit-allowed-list": [
+      {
+        "font-size": ["rem"],
+        "line-height": [],
+        "letter-spacing": ["em"]
+      },
+      {
+        "message": "font-size は rem、line-height は単位なし、letter-spacing は em で指定してください"
+      }
+    ],
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null
+  },
+  "ignoreFiles": ["dist/**", "dist-build/**", "node_modules/**"]
+}
