@@ -14,8 +14,8 @@
 - [x] STEP5  ドキュメント更新             → figma-read（README/DESIGN.md更新済み）
 - [x] STEP6  セクション実装              → lp-implementation（トップページ全10セクション実装）
 - [x] STEP7  Lighthouse計測             → lighthouse-check（PC/モバイルとも4項目100点）
-- [ ] STEP8  デプロイ確認・GitHubアップロード → deploy-preview
-- [ ] STEP9  PR作成・レビュー・マージ          → github-review
+- [x] STEP8  デプロイ確認・GitHubアップロード → deploy-preview（candy-monster を新規作成しfeatureブランチへpush）
+- [x] STEP9  PR作成・レビュー・マージ          → github-review（PR #1 をsquashマージ、public化しGitHub Pages公開）
 
 ---
 
@@ -35,7 +35,12 @@
 - 書き換え済み：`README.md` / `package.json` / `vite.config.js` / `.github/workflows/deploy-pages.yml`
 - 引き継ぎ：Vite本体と `手順Final.md`・`.claude/` 配下のルールのみ
 - STEP1 は 2026-07-21 に完了。Vite・`.gitignore`・`styles/reset.css`・Lint 3種・husky pre-commit を導入済みです。
-- `origin` は旧案件の `rifokatsubook` を指したままです。**STEP8 で Candy Monster 用の新リポジトリを作成し、差し替えるまで push しないでください。**
+- ~~`origin` は旧案件の `rifokatsubook` を指したままです。~~ → STEP8完了。`origin` は `yutoshimaoka/candy-monster` へ差し替え済み。旧履歴は破棄し、Candy Monster の新規履歴で開始した（旧履歴は rifokatsubook 側に残存）。
+- STEP9完了：GitHub Pages を有効化し **public** で公開（無料枠での公開URL発行のため private → public に変更）。
+  - リポジトリ：https://github.com/yutoshimaoka/candy-monster
+  - 公開URL：https://yutoshimaoka.github.io/candy-monster/
+  - 公開方式：`.github/workflows/deploy-pages.yml`（Viteビルド→dist配信、`base: './'`）。main への push で自動デプロイ。
+  - ⚠️ **体験談・記事カードはデザイン確認用のサンプル文言のまま公開中**。実データ入稿前に本格的な集客・宣伝を始める場合は差し替えること。
 
 ## 実装の記録（2026-07-21）
 

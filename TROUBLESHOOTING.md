@@ -72,6 +72,12 @@ STEP1（環境構築・MCP接続）の段階から、つまずくたびに追記
 
 <!-- Claude Codeが自動で追記します。手動追記も可 -->
 
+## [2026-07-21] 個人アカウントで gh repo create --visibility internal が使えない
+**症状**：STEP8のスキル手順どおり `--visibility internal` で作ろうとすると個人アカウントでは作成できない
+**原因**：internal 可視性は Organization 所有のリポジトリ専用。ログインアカウント `yutoshimaoka` は User（org所属なし）のため internal を選べない
+**対処法**：個人アカウントでは `--private` で作成する（公開せず最も安全）。org運用に移す場合は後から visibility を変更する。`gh api user --jq .type` と `gh api user/orgs` で事前に判別できる
+**発生STEP**：STEP8
+
 ## [2026-07-21] Lighthouseのモバイルパフォーマンスが56点、FCP/LCPが9.9秒
 **症状**：実装は軽量なのにモバイルのパフォーマンスが56点。FCP/LCPが9.9秒（TBT=0・CLS=0）と、描画開始だけが極端に遅い
 **原因**：Google Fonts の `<link rel="stylesheet">` がレンダーブロッキングになっていた。低速回線エミュレーションでは外部フォントCSSの取得完了まで描画が始まらず、FCPが押し出された
