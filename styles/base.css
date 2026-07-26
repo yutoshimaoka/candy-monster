@@ -4,63 +4,80 @@
  */
 
 :root {
+  /* ============================================ */
+
+  /* Y2K パステル・パレット（黒文字基調のレトロポップ） */
+
+  /* 色を変えたら `npm run check:contrast` でAAを再検証すること */
+
+  /* ============================================ */
+
   /* ---- ベース ---- */
-  --color-bg-base: #fffbf5;
-  --color-bg-subtle: #fdeef2;
-  --color-bg-surface: #fff;
-  --color-bg-header: rgb(255 251 245 / 92%); /* = bg-base の半透明。スティッキーヘッダーのブラー地 */
+  --color-bg-base: #fbebdd; /* ピーチ地 */
+  --color-bg-subtle: #f7d4e6; /* パステルピンク：セクションの塗り分け */
+  --color-bg-surface: #fff; /* カード面 */
+  --color-bg-header: rgb(251 235 221 / 92%); /* = bg-base の半透明。ヘッダーのブラー地 */
 
-  /* ---- テキスト ---- */
-  --color-text-primary: #2b2430;
-  --color-text-secondary: #6b6270;
-  --color-text-on-fill: #fff;
+  /* ---- テキスト（Y2Kはほぼ黒） ---- */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #575163;
+  --color-text-on-fill: #fff; /* 濃色面（Discord等）に乗せる白文字 */
+  --color-text-on-accent: #1a1a1a; /* パステルアクセント面に乗せる黒文字 */
 
-  /* ---- ブランド色：装飾用（文字を乗せない） ---- */
-  --color-candy-pink-vivid: #e5326e;
-  --color-coral-vivid: #f0562e;
-  --color-sunny-vivid: #ffc53d;
-  --color-turquoise-vivid: #0e9b93;
-  --color-sky-vivid: #38a8e8;
-  --color-lavender-vivid: #7c6bf0;
+  /* ---- ブランド色：装飾用（シェイプ・ドット。文字を乗せない） ---- */
+  --color-candy-pink-vivid: #f3a9d0; /* ピンク */
+  --color-coral-vivid: #f6b38c; /* ピーチ */
+  --color-sunny-vivid: #ecee5f; /* ライムイエロー */
+  --color-turquoise-vivid: #8fd7c0; /* ミント */
+  --color-sky-vivid: #a9b8f0; /* ペリウィンクル */
+  --color-lavender-vivid: #b7a3ea; /* ラベンダー */
+  --color-periwinkle: #8e7ee0; /* 濃いめペリウィンクル（大きな装飾文字など） */
 
-  /* ---- ブランド色：文字を乗せる面用（白文字で AA 以上） ---- */
-  --color-candy-pink-strong: #e21d5f;
-  --color-coral-strong: #da3910;
-  --color-turquoise-strong: #0c837c;
-  --color-sky-strong: #157bb6;
-  --color-lavender-strong: #715fef;
+  /* ---- アクセント面（黒文字を乗せる。旧 -strong の役割） ---- */
+  --color-candy-pink-strong: #f3a9d0;
+  --color-coral-strong: #f6b38c;
+  --color-turquoise-strong: #8fd7c0;
+  --color-sky-strong: #a9b8f0;
+  --color-lavender-strong: #b7a3ea;
 
-  /* ---- 淡色ティント：カード地・アイコン背景・ラベル地（文字を乗せてよい） ---- */
-  --color-pink-soft: #fdeef2; /* = bg-subtle と同値 */
-  --color-coral-soft: #fde9e3;
-  --color-sunny-soft: #fdf0dc;
-  --color-turquoise-soft: #e6f6f5;
-  --color-sky-soft: #e7f0fb;
-  --color-lavender-soft: #f0edfe; /* = ai-bg と同値 */
-  --color-cream: #fdf8ee;
-  --color-neutral-soft: #f1eef0;
+  /* ---- 淡色ティント：カード地・アイコン背景・ラベル地（黒文字を乗せてよい） ---- */
+  --color-pink-soft: #fbdcec;
+  --color-coral-soft: #fbdbcb; /* ピーチ淡 */
+  --color-sunny-soft: #f5f6b8; /* ライム淡 */
+  --color-turquoise-soft: #d5efe4; /* ミント淡 */
+  --color-sky-soft: #dce3f8; /* ペリウィンクル淡 */
+  --color-lavender-soft: #e4daf7;
+  --color-cream: #fcefdd;
+  --color-neutral-soft: #efe9ef;
 
-  /* ---- ラベル文字色：対応する soft 地の上で白黒以外の色を使うとき用（AA 以上） ---- */
-  --color-candy-pink-text: #d31b59; /* on pink-soft 4.59:1 */
-  --color-coral-text: #c6340f; /* on coral-soft 4.60:1 */
-  --color-turquoise-text: #0b7b74; /* on turquoise-soft 4.60:1 */
-  --color-sky-text: #1371a8; /* on sky-soft 4.62:1 */
-  --color-lavender-text: #6551ee; /* on lavender-soft 4.60:1 */
-  --color-amber-text: #8a5a00; /* on sunny-soft 5.27:1 */
+  /* ---- ラベル文字色：Y2Kは黒文字で統一（地の色で種別を表す） ---- */
+  --color-candy-pink-text: #1a1a1a;
+  --color-coral-text: #1a1a1a;
+  --color-turquoise-text: #1a1a1a;
+  --color-sky-text: #1a1a1a;
+  --color-lavender-text: #1a1a1a;
+  --color-amber-text: #1a1a1a;
 
   /* ---- 役割 ---- */
-  --color-cta: var(--color-coral-strong);
-  --color-cta-hover: #b82f0d;
-  --color-ai: var(--color-lavender-strong);
-  --color-ai-hover: #5c48e8;
+
+  /* 「試してみる」= 最重要CTA。ライム面＋黒文字＋黒枠＋ハードシャドウで最も目立たせる */
+  --color-cta: #ecee5f;
+  --color-cta-hover: #e0e23f;
+  --color-cta-text: #1a1a1a;
+
+  /* AI機能：ラベンダー面＋黒文字で他UIと区別 */
+  --color-ai: #b7a3ea;
+  --color-ai-hover: #a98fe6;
+  --color-ai-text: #1a1a1a;
   --color-ai-bg: var(--color-lavender-soft);
-  --color-discord: #5865f2;
+  --color-discord: #5865f2; /* Discordブランド色（白文字） */
   --color-discord-hover: #4450e0;
 
-  /* ---- 罫線・状態 ---- */
-  --color-border: #ece4e6;
-  --color-border-strong: #d8ccd0;
-  --color-focus: #157bb6;
+  /* ---- 罫線・アウトライン・状態 ---- */
+  --color-border: #e6d8ea; /* ヘアライン（フッター/ヘッダーの区切り） */
+  --color-border-strong: #cbbcd6;
+  --color-outline: #1a1a1a; /* レトロ黒アウトライン（署名的要素・ボタン） */
+  --color-focus: #6551ee;
 
   /* ---- タイポグラフィ ---- */
   --font-family-base: 'Noto Sans JP', system-ui, sans-serif;
@@ -106,11 +123,18 @@
   --radius-pill: 62.4375rem;
 
   /* ---- 影 ---- */
-  --shadow-sm: 0 1px 3px rgb(43 36 48 / 8%);
-  --shadow-card: 0 4px 16px rgb(43 36 48 / 8%);
-  --shadow-lg: 0 8px 32px rgb(43 36 48 / 12%);
-  --shadow-cta: 0 4px 14px rgb(218 57 16 / 32%);
+  --shadow-sm: 0 1px 3px rgb(26 26 26 / 8%);
+  --shadow-card: 0 4px 16px rgb(26 26 26 / 8%);
+  --shadow-lg: 0 8px 32px rgb(26 26 26 / 12%);
   --border-width: 1px;
+
+  /* ---- レトロ（ハードシャドウ・黒アウトライン） ---- */
+
+  /* ぼかしのないオフセット影＝Y2Kの署名的表現。署名要素とボタンに使う */
+  --border-retro: 2px;
+  --shadow-hard-sm: 3px 3px 0 0 var(--color-outline);
+  --shadow-hard: 5px 5px 0 0 var(--color-outline);
+  --shadow-cta: 4px 4px 0 0 var(--color-outline);
 
   /* ---- モーション ---- */
   --duration-fast: 150ms;
@@ -201,8 +225,9 @@ body {
   left: var(--spacing-xs);
   z-index: var(--z-modal);
   padding: var(--spacing-xs) var(--spacing-md);
-  color: var(--color-text-on-fill);
+  color: var(--color-cta-text);
   background-color: var(--color-cta);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-sm);
   transform: translateY(-200%);
 }

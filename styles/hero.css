@@ -27,8 +27,9 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
   background-color: var(--color-bg-surface);
-  border: var(--border-width) solid var(--color-border-strong);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-hard-sm);
 }
 
 .hero__badge-dot {
@@ -47,8 +48,12 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
+/* 「ラク」はライム文字だと地と同化するため、黒文字＋ライムのマーカー風ハイライトにする */
 .hero__title-accent {
-  color: var(--color-cta);
+  padding-inline: 0.1em;
+  color: var(--color-text-primary);
+  background-color: var(--color-cta);
+  box-decoration-break: clone;
 }
 
 .hero__lead {
@@ -78,9 +83,10 @@
   height: auto;
 }
 
-/* しずく・円のモチーフを散らす */
+/* しずく・円のモチーフを散らす（黒縁のレトロステッカー風） */
 .hero__decor {
   position: absolute;
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 

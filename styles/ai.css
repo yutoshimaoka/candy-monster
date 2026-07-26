@@ -14,9 +14,10 @@
   padding: var(--spacing-2xs) var(--spacing-md);
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-on-fill);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-ai-text);
   background-color: var(--color-ai);
+  border: var(--border-width) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 
@@ -43,8 +44,9 @@
   height: 100%;
   padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--color-bg-surface);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-hard-sm);
 }
 
 .ai-card__icon {
@@ -52,7 +54,7 @@
   width: 1.5rem;
   height: 1.5rem;
   fill: none;
-  stroke: var(--color-ai);
+  stroke: var(--color-periwinkle);
   stroke-width: 1.75px;
   stroke-linecap: round;
   stroke-linejoin: round;

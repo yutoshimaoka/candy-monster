@@ -8,8 +8,10 @@
   padding: var(--spacing-2xl) var(--spacing-lg);
   overflow: hidden;
   text-align: center;
-  background-color: var(--color-bg-subtle);
+  background-color: var(--color-lavender-soft);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-hard);
 }
 
 .community__box::before,
@@ -55,8 +57,8 @@
   margin-inline-start: -0.5rem;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
-  background-color: var(--color-bg-surface);
-  border: 2px solid var(--color-bg-subtle);
+  background-color: var(--color-sunny-vivid);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 

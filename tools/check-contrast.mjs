@@ -1,3 +1,5 @@
+// Y2K パステル・パレットのコントラスト検証（styles/base.css と対応）
+// 実行：npm run check:contrast
 const hex = (h) => {
   const n = parseInt(h.replace('#', ''), 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
@@ -12,63 +14,67 @@ const ratio = (a, b) => {
   return (x + 0.05) / (y + 0.05);
 };
 
-const BASE = '#FFFBF5',
-  W = '#FFFFFF',
-  INK = '#2B2430';
-
-// トークン（base.css / DESIGN.md と対応）
 const T = {
-  pinkSoft: '#FDEEF2',
-  coralSoft: '#FDE9E3',
-  sunnySoft: '#FDF0DC',
-  turquoiseSoft: '#E6F6F5',
-  skySoft: '#E7F0FB',
-  lavenderSoft: '#F0EDFE',
-  cream: '#FDF8EE',
-  neutralSoft: '#F1EEF0',
-  candyStrong: '#E21D5F',
-  coralStrong: '#DA3910',
-  turquoiseStrong: '#0C837C',
-  skyStrong: '#157BB6',
-  aiStrong: '#715FEF',
-  candyText: '#D31B59',
-  coralText: '#C6340F',
-  turquoiseText: '#0B7B74',
-  skyText: '#1371A8',
-  aiText: '#6551EE',
-  sunnyText: '#8A5A00',
-  textSecondary: '#6B6270',
+  peach: '#FBEBDD',
+  pink: '#F7D4E6',
+  white: '#FFFFFF',
+  ink: '#1A1A1A',
+  sub: '#575163',
+  // vivid / accent（黒文字を乗せる面）
+  candyPink: '#F3A9D0',
+  coral: '#F6B38C',
+  lime: '#ECEE5F',
+  mint: '#8FD7C0',
+  periVivid: '#A9B8F0',
+  lavender: '#B7A3EA',
+  peri: '#8E7EE0',
+  // soft ティント
+  pinkSoft: '#FBDCEC',
+  coralSoft: '#FBDBCB',
+  limeSoft: '#F5F6B8',
+  mintSoft: '#D5EFE4',
+  periSoft: '#DCE3F8',
+  lavenderSoft: '#E4DAF7',
+  cream: '#FCEFDD',
+  neutralSoft: '#EFE9EF',
+  // 濃色（白文字）
+  discord: '#5865F2',
+  focus: '#6551EE',
 };
 
 // [ラベル, 前景, 背景, 必要比]
 const checks = [
-  ['本文 on 地', INK, BASE, 4.5],
-  ['副次テキスト on 地', T.textSecondary, BASE, 4.5],
-  ['本文 on 淡いピンク', INK, T.pinkSoft, 4.5],
-  ['本文 on カード白', INK, W, 4.5],
-  ['白 on CTAコーラル', W, T.coralStrong, 4.5],
-  ['白 on CTAホバー', W, '#B82F0D', 4.5],
-  ['白 on キャンディピンク', W, T.candyStrong, 4.5],
-  ['白 on ターコイズ', W, T.turquoiseStrong, 4.5],
-  ['白 on スカイブルー', W, T.skyStrong, 4.5],
-  ['白 on ラベンダー(AI)', W, T.aiStrong, 4.5],
-  ['白 on AIホバー', W, '#5C48E8', 4.5],
-  ['白 on Discord', W, '#5865F2', 4.5],
-  ['白 on Discordホバー', W, '#4450E0', 4.5],
-  ['記事:悩み解決 candyText/pinkSoft', T.candyText, T.pinkSoft, 4.5],
-  ['記事:試してみる coralText/coralSoft', T.coralText, T.coralSoft, 4.5],
-  ['記事:AI aiText/lavenderSoft', T.aiText, T.lavenderSoft, 4.5],
-  ['記事:安心 turqText/turqSoft', T.turquoiseText, T.turquoiseSoft, 4.5],
-  ['記事:体験 skyText/skySoft', T.skyText, T.skySoft, 4.5],
-  ['体験:できた turqText/turqSoft', T.turquoiseText, T.turquoiseSoft, 4.5],
-  ['体験:少し変えた amber/sunnySoft', T.sunnyText, T.sunnySoft, 4.5],
-  ['体験:合わなかった 副次/neutralSoft', T.textSecondary, T.neutralSoft, 4.5],
-  ['本文 on AI背景', INK, T.lavenderSoft, 4.5],
-  ['本文 on cream', INK, T.cream, 4.5],
-  ['本文 on neutralSoft', INK, T.neutralSoft, 4.5],
-  ['本文 on sunnySoft', INK, T.sunnySoft, 4.5],
-  ['本文 on skySoft', INK, T.skySoft, 4.5],
-  ['フォーカスリング on 地', '#157BB6', BASE, 3.0],
+  // 黒文字 on 地・面
+  ['ink on peach(base)', T.ink, T.peach, 4.5],
+  ['ink on pink(section)', T.ink, T.pink, 4.5],
+  ['ink on white(card)', T.ink, T.white, 4.5],
+  ['ink on lavender(AI/community)', T.ink, T.lavenderSoft, 4.5],
+  // 黒文字 on アクセント（ボタン・ラベル・ハイライト）
+  ['ink on lime(CTA/highlight)', T.ink, T.lime, 4.5],
+  ['ink on lavender-accent(AIボタン)', T.ink, T.lavender, 4.5],
+  ['ink on candyPink', T.ink, T.candyPink, 4.5],
+  ['ink on coral(peach)', T.ink, T.coral, 4.5],
+  ['ink on mint', T.ink, T.mint, 4.5],
+  ['ink on periVivid', T.ink, T.periVivid, 4.5],
+  // 黒文字 on soft ティント（ラベル地・アイコン背景）
+  ['ink on pinkSoft', T.ink, T.pinkSoft, 4.5],
+  ['ink on coralSoft', T.ink, T.coralSoft, 4.5],
+  ['ink on limeSoft', T.ink, T.limeSoft, 4.5],
+  ['ink on mintSoft', T.ink, T.mintSoft, 4.5],
+  ['ink on periSoft', T.ink, T.periSoft, 4.5],
+  ['ink on cream', T.ink, T.cream, 4.5],
+  ['ink on neutralSoft', T.ink, T.neutralSoft, 4.5],
+  // 副次テキスト
+  ['sub on peach', T.sub, T.peach, 4.5],
+  ['sub on white', T.sub, T.white, 4.5],
+  ['sub on pink', T.sub, T.pink, 4.5],
+  ['sub on lavenderSoft', T.sub, T.lavenderSoft, 4.5],
+  ['sub on cream', T.sub, T.cream, 4.5],
+  // 白文字（Discord）
+  ['white on discord', T.white, T.discord, 4.5],
+  // フォーカスリング（非文字なので3:1）
+  ['focus ring on peach', T.focus, T.peach, 3.0],
+  ['focus ring on white', T.focus, T.white, 3.0],
 ];
 
 let fail = 0;
@@ -76,7 +82,7 @@ for (const [label, fg, bg, min] of checks) {
   const r = ratio(fg, bg);
   const pass = r >= min;
   if (!pass) fail++;
-  console.log(`${pass ? '✅' : '❌'} ${label.padEnd(34)} ${r.toFixed(2)}:1 (要${min}:1)`);
+  console.log(`${pass ? '✅' : '❌'} ${label.padEnd(30)} ${r.toFixed(2)}:1 (要${min})`);
 }
-console.log(fail === 0 ? '\nすべて基準を満たしています' : `\n${fail}件が基準未達`);
+console.log(fail === 0 ? '\n✅ すべて基準を満たしています' : `\n❌ ${fail}件が基準未達`);
 if (fail > 0) process.exitCode = 1;
