@@ -28,10 +28,9 @@
 }
 
 .age-chip:hover {
-  color: var(--color-text-on-fill);
-  background-color: var(--color-cta);
-  border-color: var(--color-cta);
-  transform: translateY(-2px);
+  background-color: var(--color-sunny-vivid);
+  box-shadow: 0 0 0 0 var(--color-outline);
+  transform: translate(2px, 2px);
 }
 
 .age-chip__label {
@@ -42,9 +41,4 @@
 .age-chip__sub {
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
-}
-
-/* ホバー時はチャコール地に反転するので副次テキストを明るく */
-.age-chip:hover .age-chip__sub {
-  color: var(--color-border);
 }
