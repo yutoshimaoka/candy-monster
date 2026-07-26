@@ -1,4 +1,4 @@
-// エディトリアル・ニュートラルのコントラスト検証（styles/base.css と対応）
+// Y2K パステル・パレットのコントラスト検証（styles/base.css と対応）
 // 実行：npm run check:contrast
 const hex = (h) => {
   const n = parseInt(h.replace('#', ''), 16);
@@ -15,66 +15,66 @@ const ratio = (a, b) => {
 };
 
 const T = {
-  base: '#F5EFE7',
-  subtle: '#EBDCD4',
+  peach: '#FBEBDD',
+  pink: '#F7D4E6',
   white: '#FFFFFF',
-  ink: '#2A2622',
-  sub: '#635B52',
-  cta: '#262220', // = discord も同値（チャコール）
-  aiFill: '#E3D9CB',
-  aiBg: '#EFE7DD',
-  // ニュアンス・アクセント面
-  rose: '#D9B9AD',
-  sand: '#D8C3AE',
-  gold: '#E4D9C4',
-  sage: '#BFC9BE',
-  mist: '#B9C0CB',
-  mauve: '#C6BBC7',
+  ink: '#1A1A1A',
+  sub: '#575163',
+  // vivid / accent（黒文字を乗せる面）
+  candyPink: '#F3A9D0',
+  coral: '#F6B38C',
+  lime: '#ECEE5F',
+  mint: '#8FD7C0',
+  periVivid: '#A9B8F0',
+  lavender: '#B7A3EA',
+  peri: '#8E7EE0',
   // soft ティント
-  pinkSoft: '#EAD9D1',
-  coralSoft: '#E9E1D2',
-  sunnySoft: '#EDE6D5',
-  turquoiseSoft: '#DFE3DB',
-  skySoft: '#DEE1E6',
-  lavenderSoft: '#E7E0E7',
-  cream: '#F5EFE6',
-  neutralSoft: '#ECE7E0',
+  pinkSoft: '#FBDCEC',
+  coralSoft: '#FBDBCB',
+  limeSoft: '#F5F6B8',
+  mintSoft: '#D5EFE4',
+  periSoft: '#DCE3F8',
+  lavenderSoft: '#E4DAF7',
+  cream: '#FCEFDD',
+  neutralSoft: '#EFE9EF',
+  // 濃色（白文字）
+  discord: '#5865F2',
+  focus: '#6551EE',
 };
 
 // [ラベル, 前景, 背景, 必要比]
 const checks = [
-  // 黒（チャコール）文字 on 地・面
-  ['ink on base', T.ink, T.base, 4.5],
-  ['ink on subtle(section)', T.ink, T.subtle, 4.5],
+  // 黒文字 on 地・面
+  ['ink on peach(base)', T.ink, T.peach, 4.5],
+  ['ink on pink(section)', T.ink, T.pink, 4.5],
   ['ink on white(card)', T.ink, T.white, 4.5],
-  ['ink on aiBg(section)', T.ink, T.aiBg, 4.5],
-  // 黒文字 on アクセント（ラベル・チップ・AIボタン）
-  ['ink on aiFill(AIボタン)', T.ink, T.aiFill, 4.5],
-  ['ink on rose', T.ink, T.rose, 4.5],
-  ['ink on sand', T.ink, T.sand, 4.5],
-  ['ink on gold', T.ink, T.gold, 4.5],
-  ['ink on sage', T.ink, T.sage, 4.5],
-  ['ink on mist', T.ink, T.mist, 4.5],
-  ['ink on mauve', T.ink, T.mauve, 4.5],
-  // 黒文字 on soft ティント
+  ['ink on lavender(AI/community)', T.ink, T.lavenderSoft, 4.5],
+  // 黒文字 on アクセント（ボタン・ラベル・ハイライト）
+  ['ink on lime(CTA/highlight)', T.ink, T.lime, 4.5],
+  ['ink on lavender-accent(AIボタン)', T.ink, T.lavender, 4.5],
+  ['ink on candyPink', T.ink, T.candyPink, 4.5],
+  ['ink on coral(peach)', T.ink, T.coral, 4.5],
+  ['ink on mint', T.ink, T.mint, 4.5],
+  ['ink on periVivid', T.ink, T.periVivid, 4.5],
+  // 黒文字 on soft ティント（ラベル地・アイコン背景）
   ['ink on pinkSoft', T.ink, T.pinkSoft, 4.5],
   ['ink on coralSoft', T.ink, T.coralSoft, 4.5],
-  ['ink on sunnySoft', T.ink, T.sunnySoft, 4.5],
-  ['ink on turquoiseSoft', T.ink, T.turquoiseSoft, 4.5],
-  ['ink on skySoft', T.ink, T.skySoft, 4.5],
-  ['ink on lavenderSoft', T.ink, T.lavenderSoft, 4.5],
+  ['ink on limeSoft', T.ink, T.limeSoft, 4.5],
+  ['ink on mintSoft', T.ink, T.mintSoft, 4.5],
+  ['ink on periSoft', T.ink, T.periSoft, 4.5],
   ['ink on cream', T.ink, T.cream, 4.5],
   ['ink on neutralSoft', T.ink, T.neutralSoft, 4.5],
   // 副次テキスト
-  ['sub on base', T.sub, T.base, 4.5],
+  ['sub on peach', T.sub, T.peach, 4.5],
   ['sub on white', T.sub, T.white, 4.5],
-  ['sub on subtle', T.sub, T.subtle, 4.5],
-  ['sub on aiBg', T.sub, T.aiBg, 4.5],
+  ['sub on pink', T.sub, T.pink, 4.5],
+  ['sub on lavenderSoft', T.sub, T.lavenderSoft, 4.5],
   ['sub on cream', T.sub, T.cream, 4.5],
-  // 白文字（CTA / Discord＝チャコール面）
-  ['white on cta/discord', T.white, T.cta, 4.5],
+  // 白文字（Discord）
+  ['white on discord', T.white, T.discord, 4.5],
   // フォーカスリング（非文字なので3:1）
-  ['focus(ink) ring on base', T.ink, T.base, 3.0],
+  ['focus ring on peach', T.focus, T.peach, 3.0],
+  ['focus ring on white', T.focus, T.white, 3.0],
 ];
 
 let fail = 0;
@@ -82,7 +82,7 @@ for (const [label, fg, bg, min] of checks) {
   const r = ratio(fg, bg);
   const pass = r >= min;
   if (!pass) fail++;
-  console.log(`${pass ? '✅' : '❌'} ${label.padEnd(28)} ${r.toFixed(2)}:1 (要${min})`);
+  console.log(`${pass ? '✅' : '❌'} ${label.padEnd(30)} ${r.toFixed(2)}:1 (要${min})`);
 }
 console.log(fail === 0 ? '\n✅ すべて基準を満たしています' : `\n❌ ${fail}件が基準未達`);
 if (fail > 0) process.exitCode = 1;

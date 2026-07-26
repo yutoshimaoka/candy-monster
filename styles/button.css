@@ -1,6 +1,6 @@
 /*
  * ボタン：セクションをまたいで再利用する独立 Block
- * エディトリアル：チャコールのミニマルボタン。字間広め・やわらかい影・ホバーで軽く沈む
+ * Y2K：黒アウトライン＋ハードシャドウ。ホバーで押し込む（影を縮めて沈む）
  */
 
 .button {
@@ -10,81 +10,69 @@
   justify-content: center;
   min-height: 3rem; /* タップ領域を確保（44px以上） */
   padding: var(--spacing-sm) var(--spacing-xl);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   color: var(--color-cta-text);
   text-align: center;
-  letter-spacing: var(--letter-spacing-wide);
   background-color: var(--color-cta);
-  border: var(--border-width) solid var(--color-cta);
-  border-radius: var(--radius-sm);
+  border: var(--border-retro) solid var(--color-outline);
+  border-radius: var(--radius-pill);
   box-shadow: var(--shadow-cta);
   transition:
-    background-color var(--duration-base) var(--easing-base),
-    border-color var(--duration-base) var(--easing-base),
-    transform var(--duration-base) var(--easing-base),
-    box-shadow var(--duration-base) var(--easing-base);
+    background-color var(--duration-fast) var(--easing-base),
+    transform var(--duration-fast) var(--easing-base),
+    box-shadow var(--duration-fast) var(--easing-base);
 }
 
-/* ホバー：わずかに持ち上げて影を深める */
+/* ホバー：少し押し込む（右下へ寄せて影を縮める） */
 .button:hover {
   background-color: var(--color-cta-hover);
-  border-color: var(--color-cta-hover);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-hard-sm);
+  transform: translate(2px, 2px);
 }
 
+/* 押下：影を消して完全に沈める */
 .button:active {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(0);
+  box-shadow: 0 0 0 0 var(--color-outline);
+  transform: translate(4px, 4px);
 }
 
 .button__icon {
   flex-shrink: 0;
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
   fill: currentcolor;
 }
 
-/* 主要CTAの隣に置く控えめなボタン（白地＋細フレーム＋チャコール文字） */
+/* 主要CTAの隣に置く控えめなボタン（白地＋黒文字） */
 .button--secondary {
   color: var(--color-text-primary);
-  background-color: transparent;
-  border-color: var(--color-outline);
-  box-shadow: none;
+  background-color: var(--color-bg-surface);
 }
 
 .button--secondary:hover {
-  color: var(--color-text-on-fill);
-  background-color: var(--color-cta);
-  border-color: var(--color-cta);
-  box-shadow: var(--shadow-card);
+  background-color: var(--color-cream);
 }
 
-/* AI：ウォームタウプ面＋チャコール文字 */
+/* AI：ラベンダー面＋黒文字 */
 .button--ai {
   color: var(--color-ai-text);
   background-color: var(--color-ai);
-  border-color: var(--color-ai);
-  box-shadow: var(--shadow-sm);
 }
 
 .button--ai:hover {
   background-color: var(--color-ai-hover);
-  border-color: var(--color-ai-hover);
 }
 
-/* Discord：チャコール面＋白文字（種別はアイコンで示す） */
+/* Discord：ブランド色＋白文字 */
 .button--discord {
   color: var(--color-text-on-fill);
   background-color: var(--color-discord);
-  border-color: var(--color-discord);
 }
 
 .button--discord:hover {
   background-color: var(--color-discord-hover);
-  border-color: var(--color-discord-hover);
 }
 
 .button--full {

@@ -48,12 +48,12 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-/* 「ラク」はチャコール文字＋ダスティローズの細い下線でエレガントに強調する */
+/* 「ラク」はライム文字だと地と同化するため、黒文字＋ライムのマーカー風ハイライトにする */
 .hero__title-accent {
-  padding-bottom: 0.08em;
-  font-style: italic;
+  padding-inline: 0.1em;
   color: var(--color-text-primary);
-  border-bottom: 2px solid var(--color-candy-pink-vivid);
+  background-color: var(--color-cta);
+  box-decoration-break: clone;
 }
 
 .hero__lead {
@@ -78,33 +78,40 @@
   min-height: 17rem;
 }
 
-.hero__frame {
-  width: min(100%, 20rem);
+.hero__blob {
+  width: min(100%, 24rem);
   height: auto;
-  filter: drop-shadow(var(--shadow-card));
 }
 
-/* 小さな円のアクセント（細フレームのミニマルなドット） */
+/* しずく・円のモチーフを散らす（黒縁のレトロステッカー風） */
 .hero__decor {
   position: absolute;
-  border: var(--border-width) solid var(--color-outline);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 
 .hero__decor--sun {
-  top: 4%;
-  left: 2%;
-  width: 3rem;
-  height: 3rem;
+  top: 8%;
+  left: 4%;
+  width: 3.5rem;
+  height: 3.5rem;
   background-color: var(--color-sunny-vivid);
 }
 
+.hero__decor--mint {
+  right: 8%;
+  bottom: 12%;
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: var(--color-turquoise-vivid);
+}
+
 .hero__decor--grape {
-  right: 6%;
-  bottom: 6%;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: var(--color-candy-pink-vivid);
+  right: 18%;
+  bottom: 4%;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--color-lavender-vivid);
 }
 
 /* 背景の大きなにじみ */
