@@ -15,9 +15,9 @@
   height: 100%;
   padding: var(--spacing-lg);
   background-color: var(--color-bg-surface);
-  border: var(--border-width) solid var(--color-border);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-hard-sm);
 }
 
 .voice-card__result {
@@ -28,6 +28,7 @@
   padding: var(--spacing-2xs) var(--spacing-sm);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
+  border: var(--border-width) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 

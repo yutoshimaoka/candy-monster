@@ -9,8 +9,9 @@ CSS では**直値を書かず、必ずここで定義した変数を参照**し
 本案件は Figma データを使いません。トークンは `11_design-direction.md` の方向性を実値へ落としたものです。
 同ファイル47行目「固定HEXは実装時に最終調整する」に基づき、色値はここで確定させています。
 
-配色は「Colorful Community × Playful AI」（人の温かさ 70% / AI 30%）に沿って、
-アイボリー基調 + 多色アクセントで構成しています。
+**配色は Y2K パステル（レトロポップ）** を採用（参考ビジュアルより）。
+ラベンダー／ライムイエロー／パステルピンクを主役に、ピーチ地＋**黒（#1A1A1A）の文字・太アウトライン**で構成する。
+`11_design-direction.md` の「カラフル・ポジティブ・今っぽい」を、黒縁＋ハードシャドウ＋スマイリーのレトロ表現で具体化している。
 
 ---
 
@@ -30,11 +31,10 @@ CSS では**直値を書かず、必ずここで定義した変数を参照**し
 
 ### アクセシビリティ方針
 
-- 本文・UIラベルは **WCAG 2.1 AA（4.5:1）** を満たす
-- 彩度の高いブランド色は白文字を支えられないため、**2層構成**にする
-  - `*-vivid`：装飾シェイプ・背景・イラスト用（**文字を乗せない**）
-  - `*-strong`：文字（白）を乗せる面用。白文字で 4.5:1 以上を確保済み
-- 情報を色だけで伝えない（アイコン・ラベルを併用する）
+- 本文・UIラベルは **WCAG 2.1 AA（4.5:1）** を満たす（全ペア実測済み。`npm run check:contrast`）
+- Y2K配色は**文字を黒（#1A1A1A）に統一**し、パステル面の上で高コントラストを得る（黒×パステルは 7〜17:1）
+- 白文字を使うのは Discord ブランド面のみ（4.61:1）
+- 情報を色だけで伝えない（アイコン・ラベル文言を併用する）
 
 実装は `styles/base.css` の `:root` が正本です。ここは対応表として同じ値を記載します。
 色を変えるときは `tools/check-contrast.mjs`（`npm run check:contrast`）で AA を再検証すること。
@@ -42,82 +42,103 @@ CSS では**直値を書かず、必ずここで定義した変数を参照**し
 ```css
 :root {
   /* ---- ベース ---- */
-  --color-bg-base: #fffbf5;     /* アイボリー／ウォームホワイト：ページ地 */
-  --color-bg-subtle: #fdeef2;   /* 淡いピンク：セクションの塗り分け */
+  --color-bg-base: #fbebdd;     /* ピーチ地：ページ全体 */
+  --color-bg-subtle: #f7d4e6;   /* パステルピンク：セクションの塗り分け */
   --color-bg-surface: #ffffff;  /* カード面 */
-  --color-bg-header: rgb(255 251 245 / 92%); /* bg-base の半透明。ヘッダーのブラー地 */
+  --color-bg-header: rgb(251 235 221 / 92%); /* bg-base の半透明。ヘッダーのブラー地 */
 
-  /* ---- テキスト ---- */
-  --color-text-primary: #2b2430;   /* 地に対して 14.57:1 */
-  --color-text-secondary: #6b6270; /* 地に対して 5.65:1 */
-  --color-text-on-fill: #ffffff;   /* 濃色面に乗せる文字 */
+  /* ---- テキスト（Y2Kは黒基調） ---- */
+  --color-text-primary: #1a1a1a;   /* 地に対して 14.9:1 */
+  --color-text-secondary: #575163; /* 地に対して 6.5:1 */
+  --color-text-on-fill: #ffffff;   /* 濃色面（Discord）に乗せる白文字 */
+  --color-text-on-accent: #1a1a1a; /* パステルアクセント面に乗せる黒文字 */
 
-  /* ---- ブランド色：装飾用（文字を乗せない。シェイプ・アイコン・ドット） ---- */
-  --color-candy-pink-vivid: #e5326e;
-  --color-coral-vivid: #f0562e;
-  --color-sunny-vivid: #ffc53d;
-  --color-turquoise-vivid: #0e9b93;
-  --color-sky-vivid: #38a8e8;
-  --color-lavender-vivid: #7c6bf0;
+  /* ---- ブランド色：装飾用（シェイプ・ドット・アイコン線） ---- */
+  --color-candy-pink-vivid: #f3a9d0; /* ピンク */
+  --color-coral-vivid: #f6b38c;      /* ピーチ */
+  --color-sunny-vivid: #ecee5f;      /* ライムイエロー */
+  --color-turquoise-vivid: #8fd7c0;  /* ミント */
+  --color-sky-vivid: #a9b8f0;        /* ペリウィンクル */
+  --color-lavender-vivid: #b7a3ea;   /* ラベンダー */
+  --color-periwinkle: #8e7ee0;       /* 濃いめペリウィンクル（アイコン線・装飾文字） */
 
-  /* ---- ブランド色：文字を乗せる面用（白文字で AA 以上） ---- */
-  --color-candy-pink-strong: #e21d5f;  /* 白文字 4.59:1 */
-  --color-coral-strong: #da3910;       /* 白文字 4.59:1 */
-  --color-turquoise-strong: #0c837c;   /* 白文字 4.61:1 */
-  --color-sky-strong: #157bb6;         /* 白文字 4.62:1 */
-  --color-lavender-strong: #715fef;    /* 白文字 4.58:1 */
+  /* ---- アクセント面（黒文字を乗せる。旧 -strong の役割） ---- */
+  --color-candy-pink-strong: #f3a9d0; /* 黒文字 9.45:1 */
+  --color-coral-strong: #f6b38c;      /* 黒文字 9.73:1 */
+  --color-turquoise-strong: #8fd7c0;  /* 黒文字 10.48:1 */
+  --color-sky-strong: #a9b8f0;        /* 黒文字 8.95:1 */
+  --color-lavender-strong: #b7a3ea;   /* 黒文字 7.82:1 */
 
-  /* ---- 淡色ティント：カード地・アイコン背景・ラベル地（本文/ラベル文字を乗せてよい） ---- */
-  --color-pink-soft: #fdeef2;      /* = bg-subtle */
-  --color-coral-soft: #fde9e3;
-  --color-sunny-soft: #fdf0dc;
-  --color-turquoise-soft: #e6f6f5;
-  --color-sky-soft: #e7f0fb;
-  --color-lavender-soft: #f0edfe;  /* = ai-bg */
-  --color-cream: #fdf8ee;
-  --color-neutral-soft: #f1eef0;
+  /* ---- 淡色ティント：カード地・アイコン背景・ラベル地（黒文字を乗せてよい） ---- */
+  --color-pink-soft: #fbdcec;
+  --color-coral-soft: #fbdbcb;      /* ピーチ淡 */
+  --color-sunny-soft: #f5f6b8;      /* ライム淡 */
+  --color-turquoise-soft: #d5efe4;  /* ミント淡 */
+  --color-sky-soft: #dce3f8;        /* ペリウィンクル淡 */
+  --color-lavender-soft: #e4daf7;   /* = ai-bg */
+  --color-cream: #fcefdd;
+  --color-neutral-soft: #efe9ef;
 
-  /* ---- ラベル文字色：対応する soft 地に色文字を乗せるとき用（各 4.5:1 以上） ---- */
-  --color-candy-pink-text: #d31b59;  /* on pink-soft 4.59:1 */
-  --color-coral-text: #c6340f;       /* on coral-soft 4.60:1 */
-  --color-turquoise-text: #0b7b74;   /* on turquoise-soft 4.60:1 */
-  --color-sky-text: #1371a8;         /* on sky-soft 4.62:1 */
-  --color-lavender-text: #6551ee;    /* on lavender-soft 4.60:1 */
-  --color-amber-text: #8a5a00;       /* on sunny-soft 5.27:1 */
+  /* ---- ラベル文字色：Y2Kは黒文字で統一（地の色で種別を表す） ---- */
+  --color-candy-pink-text: #1a1a1a;
+  --color-coral-text: #1a1a1a;
+  --color-turquoise-text: #1a1a1a;
+  --color-sky-text: #1a1a1a;
+  --color-lavender-text: #1a1a1a;
+  --color-amber-text: #1a1a1a;
 
   /* ---- 役割（セマンティック） ---- */
-  /* 「試してみる」= 最重要CTA。ブランド内で1色固定する */
-  --color-cta: var(--color-coral-strong);
-  --color-cta-hover: #b82f0d;        /* 白文字 6.09:1 */
-  /* AI機能はブルー〜ラベンダーで他UIと視覚的に区別する */
-  --color-ai: var(--color-lavender-strong);
-  --color-ai-hover: #5c48e8;         /* 白文字 5.92:1 */
+  /* 「試してみる」= 最重要CTA。ライム面＋黒文字＋黒枠＋ハードシャドウで最も目立たせる */
+  --color-cta: #ecee5f;
+  --color-cta-hover: #e0e23f;
+  --color-cta-text: #1a1a1a;         /* 黒文字 14.06:1 */
+  /* AI機能：ラベンダー面＋黒文字で他UIと区別 */
+  --color-ai: #b7a3ea;
+  --color-ai-hover: #a98fe6;
+  --color-ai-text: #1a1a1a;          /* 黒文字 7.82:1 */
   --color-ai-bg: var(--color-lavender-soft);
-  /* Discord は同社ブランドカラーに整合させる */
+  /* Discord は同社ブランドカラー（唯一の白文字面） */
   --color-discord: #5865f2;          /* 白文字 4.61:1 */
-  --color-discord-hover: #4450e0;    /* 白文字 6.05:1 */
+  --color-discord-hover: #4450e0;
 
-  /* ---- 罫線・状態 ---- */
-  --color-border: #ece4e6;
-  --color-border-strong: #d8ccd0;
-  --color-focus: #157bb6;  /* フォーカスリング：地に対して 4.49:1 */
+  /* ---- 罫線・アウトライン・状態 ---- */
+  --color-border: #e6d8ea;           /* ヘアライン（フッター等の区切り） */
+  --color-border-strong: #cbbcd6;
+  --color-outline: #1a1a1a;          /* レトロ黒アウトライン（署名要素・ボタン） */
+  --color-focus: #6551ee;            /* フォーカスリング：地に対して 4.55:1 */
 }
 ```
 
-### soft / strong / text / vivid の使い分け
+### レトロ（黒アウトライン・ハードシャドウ）
+
+Y2K の署名的表現。ぼかしのないオフセット影＋黒2px枠を、署名要素とボタンに使う。
+
+```css
+:root {
+  --border-retro: 2px;                              /* 黒アウトラインの太さ */
+  --shadow-hard-sm: 3px 3px 0 0 var(--color-outline);
+  --shadow-hard: 5px 5px 0 0 var(--color-outline);
+  --shadow-cta: 4px 4px 0 0 var(--color-outline);   /* ボタン */
+}
+```
+
+ボタン・カード・チップは、ホバーで右下へ寄せて影を縮め（`translate(2px,2px)` + `--shadow-hard-sm`）、
+押下で影を消して沈める（`translate(4px,4px)` + 影なし）＝物理ボタン風の押し込み表現。
+
+### soft / strong / vivid / text の使い分け
 
 同じ色相でも用途で変数を分けています。**面の役割で選ぶ**こと。
 
-- `-vivid`：装飾専用（シェイプ・ドット・アイコン線）。**文字を乗せない**
-- `-strong`：濃い面。**白文字**を乗せる（ボタン・ラベルの塗り）
-- `-soft`：淡い面。**本文（primary）や `-text` の色文字**を乗せる（カード地・タグ地）
-- `-text`：`-soft` の上に**色文字**を乗せるとき専用（記事タイプ／体験談ラベル）
+- `-vivid`：装飾専用（シェイプ・ドット・アイコン線）
+- `-strong`：アクセント面。**黒文字**を乗せる（ボタン・ラベルの塗り）※Y2Kでは白文字は使わない
+- `-soft`：淡い面。カード地・タグ地・アイコン背景。黒文字を乗せる
+- `-text`：ラベル文字色。Y2Kでは全て黒（`#1a1a1a`）に統一（地の色で種別を表す）
 
-### サニーイエローの扱い
+### 黒アウトラインの使いどころ
 
-`--color-sunny-vivid: #ffc53d` は白文字が乗りません（1.58:1）。
-**必ず `--color-text-primary` を乗せる**か、装飾のみに使ってください（黒文字で 9.52:1）。
-淡い `--color-sunny-soft` の上に文字を置く場合は `--color-amber-text`（5.27:1）を使います。
+`--color-outline`（黒2px）は、署名的な要素にのみ使う：ボタン、カード（悩み/カテゴリ/試す/体験/記事）、
+チップ、ラベルpill、アイコン背景、ヘッダー下線、ヒーローの装飾ドット・スマイリー。
+フッター/ヘッダー内の細い区切りは `--color-border`（淡色ヘアライン）を使い、黒枠を乱用しない。
 
 ---
 
@@ -214,13 +235,13 @@ PC / SP で並び順が変わる箇所は `grid-template-areas` で切り替え�
 ## 影
 
 ボーダー・シャドウの単位は `px` を使う。
+やわらかい影（`--shadow-*`）は補助的に、Y2Kの主役はハードシャドウ（`--shadow-hard*` / 上記「レトロ」参照）。
 
 ```css
 :root {
-  --shadow-sm: 0 1px 3px rgb(43 36 48 / 8%);
-  --shadow-card: 0 4px 16px rgb(43 36 48 / 8%);
-  --shadow-lg: 0 8px 32px rgb(43 36 48 / 12%);
-  --shadow-cta: 0 4px 14px rgb(218 57 16 / 32%);
+  --shadow-sm: 0 1px 3px rgb(26 26 26 / 8%);
+  --shadow-card: 0 4px 16px rgb(26 26 26 / 8%);
+  --shadow-lg: 0 8px 32px rgb(26 26 26 / 12%);
   --border-width: 1px;
 }
 ```

@@ -14,17 +14,17 @@
   height: 100%;
   padding: var(--spacing-lg);
   background-color: var(--color-bg-surface);
-  border: var(--border-width) solid var(--color-border);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-hard-sm);
   transition:
     transform var(--duration-base) var(--easing-bounce),
     box-shadow var(--duration-base) var(--easing-base);
 }
 
 .category-card:hover {
-  box-shadow: var(--shadow-card);
-  transform: translateY(-3px);
+  box-shadow: var(--shadow-hard);
+  transform: translate(-2px, -2px);
 }
 
 .category-card__icon-wrap {
@@ -33,6 +33,7 @@
   width: 3.5rem;
   height: 3.5rem;
   margin-bottom: var(--spacing-md);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-md);
 }
 

@@ -17,20 +17,21 @@
   padding: var(--spacing-lg);
   overflow: hidden;
   background-color: var(--color-bg-surface);
-  border: var(--border-width) solid var(--color-border);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-hard);
 }
 
-/* キャンディのモチーフ */
+/* キャンディのモチーフ（黒縁のドット） */
 .try-card::before {
   position: absolute;
-  top: -2.5rem;
-  right: -2.5rem;
-  width: 6rem;
-  height: 6rem;
+  top: -1.75rem;
+  right: -1.75rem;
+  width: 5rem;
+  height: 5rem;
   content: '';
-  background-color: var(--color-bg-subtle);
+  background-color: var(--color-sunny-vivid);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 
@@ -46,6 +47,7 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   background-color: var(--color-bg-subtle);
+  border: var(--border-width) solid var(--color-outline);
   border-radius: var(--radius-pill);
 }
 
@@ -96,7 +98,7 @@
 /* 「試してみる」を押したときの軽い演出（過度にしない） */
 .try-card__button[aria-pressed='true'] {
   background-color: var(--color-turquoise-strong);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-hard-sm);
 }
 
 .try-card__button-label--done {

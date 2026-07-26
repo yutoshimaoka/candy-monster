@@ -18,16 +18,19 @@
   min-height: 3rem;
   padding: var(--spacing-sm) var(--spacing-xl);
   background-color: var(--color-bg-surface);
-  border: var(--border-width) solid var(--color-border-strong);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-hard-sm);
   transition:
-    transform var(--duration-fast) var(--easing-bounce),
-    border-color var(--duration-fast) var(--easing-base);
+    transform var(--duration-fast) var(--easing-base),
+    box-shadow var(--duration-fast) var(--easing-base),
+    background-color var(--duration-fast) var(--easing-base);
 }
 
 .age-chip:hover {
-  border-color: var(--color-cta);
-  transform: translateY(-2px);
+  background-color: var(--color-sunny-vivid);
+  box-shadow: 0 0 0 0 var(--color-outline);
+  transform: translate(2px, 2px);
 }
 
 .age-chip__label {

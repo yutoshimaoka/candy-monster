@@ -1,5 +1,6 @@
 /*
  * ボタン：セクションをまたいで再利用する独立 Block
+ * Y2K：黒アウトライン＋ハードシャドウ。ホバーで押し込む（影を縮めて沈む）
  */
 
 .button {
@@ -12,23 +13,29 @@
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--color-text-on-fill);
+  color: var(--color-cta-text);
   text-align: center;
   background-color: var(--color-cta);
+  border: var(--border-retro) solid var(--color-outline);
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-cta);
   transition:
     background-color var(--duration-fast) var(--easing-base),
-    transform var(--duration-fast) var(--easing-bounce);
+    transform var(--duration-fast) var(--easing-base),
+    box-shadow var(--duration-fast) var(--easing-base);
 }
 
+/* ホバー：少し押し込む（右下へ寄せて影を縮める） */
 .button:hover {
   background-color: var(--color-cta-hover);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-hard-sm);
+  transform: translate(2px, 2px);
 }
 
+/* 押下：影を消して完全に沈める */
 .button:active {
-  transform: translateY(0);
+  box-shadow: 0 0 0 0 var(--color-outline);
+  transform: translate(4px, 4px);
 }
 
 .button__icon {
@@ -38,30 +45,30 @@
   fill: currentcolor;
 }
 
-/* 主要CTAの隣に置く控えめなボタン */
+/* 主要CTAの隣に置く控えめなボタン（白地＋黒文字） */
 .button--secondary {
   color: var(--color-text-primary);
   background-color: var(--color-bg-surface);
-  border: var(--border-width) solid var(--color-border-strong);
-  box-shadow: var(--shadow-sm);
 }
 
 .button--secondary:hover {
-  background-color: var(--color-bg-subtle);
+  background-color: var(--color-cream);
 }
 
+/* AI：ラベンダー面＋黒文字 */
 .button--ai {
+  color: var(--color-ai-text);
   background-color: var(--color-ai);
-  box-shadow: var(--shadow-card);
 }
 
 .button--ai:hover {
   background-color: var(--color-ai-hover);
 }
 
+/* Discord：ブランド色＋白文字 */
 .button--discord {
+  color: var(--color-text-on-fill);
   background-color: var(--color-discord);
-  box-shadow: var(--shadow-card);
 }
 
 .button--discord:hover {
